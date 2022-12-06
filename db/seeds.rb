@@ -99,3 +99,18 @@ routes = Route.create([
     time: "Early morning or early evening. During the day, there is limited shade and lots of foot traffic."
   }
 ])
+
+reviews = Review.create([
+  {
+    title: 'Best run ever!',
+    body: 'I had such a great time, it was so beautiful crossing the bridges in the morning',
+    rating: 5,
+    route: routes.first
+  },
+  {
+    title: 'Horrible run!',
+    body: 'I hated this run, there were so many people on the bridge I couldnt even run, I had to walk :( !!',
+    rating: 1,
+    route: routes.first
+  }
+])
