@@ -349,3 +349,9 @@ troubleshoot:
 
 - [Getting Started with Ruby on Rails on Render](https://render.com/docs/deploy-rails)
 - [Render Databases Guide](https://render.com/docs/databases)
+
+
+# important links
+
+running routes: https://www.runningroutes.nyrr.org/
+image hosting: https://freeimage.host/marisasaunders
