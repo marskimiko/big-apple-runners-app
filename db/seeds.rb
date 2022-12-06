@@ -31,7 +31,7 @@ routes = Route.create([
   {
     name: "High Bridge Bronx",
     image_url: "https://freeimage.host/i/HCLhPpthttps://iili.io/HCLeNse.png",
-    distance: 3.4
+    distance: 3.4,
     location: "Start in the center of Keltch Park.",
     time: "Early morning or early evening. During the day, there can be limited shade and lots of foot traffic."
   },
