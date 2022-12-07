@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { UserContext } from "./context/user";
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 function Signup() {
   const [username, setUsername] = useState("")
@@ -8,13 +8,13 @@ function Signup() {
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
   const [errorsList, setErrorsList] =useState([])
   const {signup} = useContext(UserContext);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault()
     fetch('/signup', {
       method: 'POST',
-      headers: { 'Content-Type' : 'application/json'},
+      headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify({
         username: username,
         password: password,
@@ -25,7 +25,7 @@ function Signup() {
     .then(user => {
       if (!user.errors) {
         signup(user)
-        navigate('/');
+        // navigate('/');
       } else {
         setUsername("")
         setPassword("")
