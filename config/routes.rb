@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # will have full crud
   # resources :reviews
-  # resources :routes
+  resources :routes, only: [:index]
 
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end
