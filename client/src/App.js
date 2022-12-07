@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './Home'
 import Navbar from './Navbar'
 import Signup from './Signup'
 import Login from './Login'
-import { UserProvider } from "./context/user"
+// import { UserProvider } from "./context/user"
 
 // function App(props) {
 //   return (
@@ -22,8 +22,27 @@ import { UserProvider } from "./context/user"
 //   )
 // }
 
-function App(props) {
-  
+function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+
+  return (
+    <div>
+      <Navbar />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/login" element={<Login />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
