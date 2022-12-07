@@ -1,47 +1,16 @@
 import React, { useState } from 'react'
 // import { useNavigate } from 'react-router-dom';
 
-function Signup( {signUpFunction}) {
+function Signup( {setUser}) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
-  const [errorsList, setErrorsList] =useState([])
-  const [isLoading, setIsLoading] = useState(false);
-  // const {signup} = useContext(UserContext);
-  // const navigate = useNavigate();
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   fetch('/signup', {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json'},
-  //     body: JSON.stringify({
-  //       username: username,
-  //       password: password,
-  //       password_confirmation: passwordConfirmation 
-  //     })
-  //   })
-  //   .then(res => res.json())
-  //   .then(user => {
-  //     if (!user.errors) {
-  //       signup(user)
-  //       // navigate('/');
-  //     } else {
-  //       setUsername("")
-  //       setPassword("")
-  //       setPasswordConfirmation("")
-  //       const displayErrors = user.errors.map(e => <li>{e}</li>)
-  //       setErrorsList(displayErrors)
-  //     }
-  //   })
-  // }
 
   function handleSubmit(e) {
     e.preventDefault()
-    setErrorsList([]);
-    setIsLoading(true);
 
-    fetch("/signuo", {
+    fetch("/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -52,13 +21,8 @@ function Signup( {signUpFunction}) {
         password_confirmation: passwordConfirmation
       }),
     }).then((r) => {
-      setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => {
-          signUpFunction(user)
-        });
-      } else {
-        r.json().then((displayErrors) => setErrorsList(displayErrors.setErrorsList))
+        r.json().then((user) => setUser(user))
       }
     });
   }
@@ -66,35 +30,36 @@ function Signup( {signUpFunction}) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>Username: </label>
+        <h1>Sign Up</h1>
+        <label htmlFor="username">Username: </label>
           <input
             type="text"
-            id="name"
+            id="username"
+            autoComplete="off"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-          /> 
+          />
         <br/>
-        <label>Password: </label>
+        <label htmlFor="password">Password: </label>
           <input 
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="current-password"
           />
         <br />
-        <label>Confirm Password: </label>
+        <label htmlFor="password">Confirm Password: </label>
           <input 
             type="password"
             id="password_confirmation"
             value={passwordConfirmation}
             onChange={(e) => setPasswordConfirmation(e.target.value)}
+            autoComplete="current-password"
           />
-        <br />
-          <input type="submit"/>
+        <br/>
+        <button type="submit">Sign up!</button>
       </form>
-      <ul>
-        {errorsList}
-      </ul>
     </div>
   )
 }

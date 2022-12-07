@@ -1,18 +1,12 @@
 import React from 'react'
 // import { UserContext } from './context/user'
 
-function Home({ user, setUser }) {
-  // const { user } = useContext(UserContext)
-
-  if (!user || user.error) {
-    return (<h3>Please Login or Signup</h3>)
+function Home({ user }) {
+  if (user) {
+    return <h1>Welcome, {user.username}!</h1>;
   } else {
-    return (
-      <div>
-        <h3>{user.username} Home</h3>
-      </div>
-    )
+    return <h1>Please Login or Sign Up</h1>;
   }
 }
 
-export default Home; 
+export default Home;
