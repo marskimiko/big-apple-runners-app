@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div>
-      <Navbar user={user}/>
+      <Navbar user={user} setUser={setUser} />
         <Routes>
         <Route exact path="/" element={<Home user={user} />}/>
         <Route exact path="/signup" element={<Signup setUser={setUser}/>} />
