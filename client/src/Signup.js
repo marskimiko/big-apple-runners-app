@@ -1,8 +1,7 @@
-import React, { useState, useContext } from 'react'
-import { UserContext } from "./context/user";
+import React, { useState } from 'react'
 // import { useNavigate } from 'react-router-dom';
 
-function Signup() {
+function Signup( {signUpFunction}) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
@@ -55,7 +54,9 @@ function Signup() {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => {
+          signUpFunction(user)
+        });
       } else {
         r.json().then((displayErrors) => setErrorsList(displayErrors.setErrorsList))
       }

@@ -33,14 +33,22 @@ function App() {
     });
   }, []);
 
-  if (!user) return <Login onLogin={setUser} />;
+  const signUpFunction = (user) => {
+    setUser(user)
+  }
+
+  // if (!user) return <Login onLogin={setUser} />;
 
   return (
     <div>
       <Navbar user={user} setUser={setUser}/>
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/" element={
+          <Home 
+            user={user} 
+            setUser={setUser} 
+          />}/>
+        <Route exact path="/signup" element={<Signup signUpFunction={signUpFunction} />} />
         <Route exact path="/login" element={<Login />} />
       </Routes>
     </div>
