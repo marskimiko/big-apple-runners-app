@@ -7,33 +7,59 @@ function Signup() {
   const [password, setPassword] = useState("")
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
   const [errorsList, setErrorsList] =useState([])
-  const {signup} = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(false);
+  // const {signup} = useContext(UserContext);
   // const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   fetch('/signup', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json'},
+  //     body: JSON.stringify({
+  //       username: username,
+  //       password: password,
+  //       password_confirmation: passwordConfirmation 
+  //     })
+  //   })
+  //   .then(res => res.json())
+  //   .then(user => {
+  //     if (!user.errors) {
+  //       signup(user)
+  //       // navigate('/');
+  //     } else {
+  //       setUsername("")
+  //       setPassword("")
+  //       setPasswordConfirmation("")
+  //       const displayErrors = user.errors.map(e => <li>{e}</li>)
+  //       setErrorsList(displayErrors)
+  //     }
+  //   })
+  // }
+
+  function handleSubmit(e) {
     e.preventDefault()
-    fetch('/signup', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json'},
+    setErrorsList([]);
+    setIsLoading(true);
+
+    fetch("/signuo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
-        username: username,
-        password: password,
-        password_confirmation: passwordConfirmation 
-      })
-    })
-    .then(res => res.json())
-    .then(user => {
-      if (!user.errors) {
-        signup(user)
-        // navigate('/');
+        username,
+        password,
+        password_confirmation: passwordConfirmation
+      }),
+    }).then((r) => {
+      setIsLoading(false);
+      if (r.ok) {
+        r.json().then((user) => onLogin(user));
       } else {
-        setUsername("")
-        setPassword("")
-        setPasswordConfirmation("")
-        const displayErrors = user.errors.map(e => <li>{e}</li>)
-        setErrorsList(displayErrors)
+        r.json().then((displayErrors) => setErrorsList(displayErrors.setErrorsList))
       }
-    })
+    });
   }
 
   return (

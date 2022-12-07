@@ -33,9 +33,11 @@ function App() {
     });
   }, []);
 
+  if (!user) return <Login onLogin={setUser} />;
+
   return (
     <div>
-      <Navbar />
+      <Navbar user={user} setUser={setUser}/>
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/signup" element={<Signup />} />
