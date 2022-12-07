@@ -30,6 +30,8 @@ function Signup() {
         setUsername("")
         setPassword("")
         setPasswordConfirmation("")
+        const displayErrors = user.errors.map(e => <li>{e}</li>)
+        setErrorsList(displayErrors)
       }
     })
   }
