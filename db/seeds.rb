@@ -100,17 +100,26 @@ routes = Route.create([
   }
 ])
 
-# reviews = Review.create([
-#   {
-#     title: 'Best run ever!',
-#     body: 'I had such a great time, it was so beautiful crossing the bridges in the morning',
-#     rating: 5,
-#     route: routes.first
-#   },
-#   {
-#     title: 'Horrible run!',
-#     body: 'I hated this run, there were so many people on the bridge I couldnt even run, I had to walk :( !!',
-#     rating: 1,
-#     route: routes.first
-#   }
-# ])
+user = User.create([
+  {
+    username: "marisa", 
+    password: "kimiko"
+   }
+])
+
+reviews = Review.create([
+  {
+    title: 'Best run ever!',
+    body: 'I had such a great time, it was so beautiful crossing the bridges in the morning',
+    rating: 5,
+    route_id: Route.first.id,
+    user_id: User.first.id
+  },
+  {
+    title: 'Horrible run!',
+    body: 'I hated this run, there were so many people on the bridge I couldnt even run, I had to walk :( !!',
+    rating: 1,
+    route_id: Route.first.id,
+    user_id: User.first.id
+  }
+])
