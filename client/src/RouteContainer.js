@@ -12,7 +12,15 @@ function RouteContainer({ routes }) {
   //   </div>
   // )
   return (
-    
+    <div classname="routes">
+      {routes.map((route) => {
+        return (
+          <div>
+            <RouteCard key={route.id} route={route} />
+          </div>
+        )
+      })}
+    </div>
   )
 }
 
