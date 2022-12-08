@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card  from 'react-bootstrap/Card';
 
-function Route({ route }) {
+function RouteCard({ route }) {
   const {name, image_url, location, time, distance} = route
 
   const styles = {
@@ -26,4 +26,4 @@ function Route({ route }) {
   )
 }
 
-export default Route;
+export default RouteCard;

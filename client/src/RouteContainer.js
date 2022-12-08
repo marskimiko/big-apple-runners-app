@@ -1,22 +1,21 @@
-import styled from 'styled-components'
-import Route from './Route'
+import RouteCard from './RouteCard'
+// import RouteDetails from './RouteDetails'
+import { Route, Routes } from 'react-router-dom';
 
 
 function RouteContainer({ routes }) {
+  
 
   return (
     <div>
-      <CardContainer>
-        {routes.map(route => <Route key={route.id} route={route}/>)}
-      </CardContainer>
+        {routes.map(route => <RouteCard key={route.id} route={route}/>)}
+    
+      {/* <Routes>
+        <Route exact path="/routes/1" element={<RouteDetails />}/>
+      </Routes> */}
+    
     </div>
   )
 }
 
 export default RouteContainer
-
-const CardContainer = styled.ul`
-    display:flex;
-    flex-direction:column;
-
-`
