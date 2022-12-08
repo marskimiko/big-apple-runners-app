@@ -1,22 +1,31 @@
 import { useParams } from 'react-router-dom';
 
 function RouteDetails( {routes} ) {
-  // const {name, image_url, location, time, distance, id} = routes
-  // console.log(route)
   const params = useParams()
-  console.log(params)
-  // const details = routes.forEach((route) => {
-  //   if (route.id === params.id) {
-  //     return route
-  //   }
-  // })
+
   const details = routes.find((route) => {
     return parseInt(params.id) === route.id
   })
+
+  // try to catch error VV (none of the ones below are working)
   
-  
-  console.log('details:', details)
-  console.log('params:', params.id)
+  // const details = routes.find((route) => {
+  //   try {
+  //     return parseInt(params.id) === route.id
+  //   } catch(e) {
+  //     Rollbar.error("Something went wrong", e) 
+  //   }
+  // })
+
+  // const details = routes.find((route) => {
+  //   if (typeof(route) === undefined) {
+  //     return 'error'
+  //   } else {
+  //     return parseInt(params.id) === route.id
+  //   }
+  // })
+
+
   return (
     <div>
       <h1>{details['name']}</h1>

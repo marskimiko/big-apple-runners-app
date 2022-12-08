@@ -1,7 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from "styled-components";
-import Card  from 'react-bootstrap/Card';
-import RouteDetails from './RouteDetails'
 import { Link } from 'react-router-dom';
 
 function RouteCard({ route }) {
@@ -10,18 +8,7 @@ function RouteCard({ route }) {
   return (
     <Wrapper>
       <WrapperChild>
-        {/* <Link to="/routes/:id" route={route}>details</Link>
-        <Routes>
-          <Route path='/teams/:id'>Details</Route>
-        </Routes> */}
-        <h1>{name}</h1>
         <Link to={`/routes/${id}`}><img src={image_url} alt="routephoto"/></Link>
-        {/* <Routes>
-        <Route exact path="/routes/:id" element={<RouteDetails routes={route}/>}/>
-        </Routes> */}
-        <h2>{location}</h2>
-        <h2>{time}</h2>
-        <h3>{distance}</h3>
       </WrapperChild>
     </Wrapper>
 
