@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   get '/me', to: 'users#show'
 
   # will have full crud
-  # resources :reviews
-  resources :routes, only: [:index]
+  resources :reviews
+  resources :routes, only: [:index, :show]
 
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end
