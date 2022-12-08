@@ -5,14 +5,17 @@ import RouteDetails from './RouteDetails'
 import { Link } from 'react-router-dom';
 
 function RouteCard({ route }) {
-  const {name, image_url, location, time, distance} = route
+  const {name, image_url, location, time, distance,id} = route
 
   return (
     <Wrapper>
       <WrapperChild>
-        <Link to="/routes/:id">details</Link>
+        {/* <Link to="/routes/:id" route={route}>details</Link>
+        <Routes>
+          <Route path='/teams/:id'>Details</Route>
+        </Routes> */}
         <h1>{name}</h1>
-        <img src={image_url} alt="routephoto"/>
+        <Link to={`/routes/${id}`}><img src={image_url} alt="routephoto"/></Link>
         {/* <Routes>
         <Route exact path="/routes/:id" element={<RouteDetails routes={route}/>}/>
         </Routes> */}

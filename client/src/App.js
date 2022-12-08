@@ -6,7 +6,7 @@ import Navbar from './Navbar'
 import Signup from './Signup'
 import Login from './Login'
 import RouteContainer from './RouteContainer'
-// import RouteDetails from './RouteDetails'
+import RouteDetails from './RouteDetails'
 
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
         <Route exact path="/signup" element={<Signup setUser={setUser}/>} />
         <Route exact path="/login" element={<Login setUser={setUser}/>} />
         <Route exact path="/routes" element={<RouteContainer routes={routes} reviews={reviews}/>}/>
-        {/* <Route exact path="/routes/:id" element={<RouteDetails routes={routes}/>}/> */}
+        <Route exact path="/routes/:id" element={<RouteDetails routes={routes}/>}/>
       </Routes>
     </div>
   );

@@ -1,14 +1,29 @@
 import { useParams } from 'react-router-dom';
 
-function RouteDetails( {route} ) {
-  console.log(route)
+function RouteDetails( {routes} ) {
+  // const {name, image_url, location, time, distance, id} = routes
+  // console.log(route)
   const params = useParams()
-  const userID = params.id
   console.log(params)
+  // const details = routes.forEach((route) => {
+  //   if (route.id === params.id) {
+  //     return route
+  //   }
+  // })
+  const details = routes.find((route) => {
+    return parseInt(params.id) === route.id
+  })
+  
+  
+  console.log('details:', details)
+  console.log('params:', params.id)
   return (
     <div>
-      <h3>Details about route {userID}</h3>
-      <h3>{route[params.id]}</h3>
+      <h1>{details['name']}</h1>
+      <img src={details['image_url']} alt="mapPhoto"/>
+      <h2>{details['location']}</h2>
+      <h3>{details['time']}</h3>
+      <h3>{details['distance']} miles</h3>
     </div>
   )
 }
