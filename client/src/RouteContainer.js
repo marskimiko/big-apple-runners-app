@@ -1,5 +1,6 @@
-import { Route } from 'react-router-dom';
 import styled from 'styled-components'
+import Route from './Route'
+
 
 function RouteContainer({ routes }) {
 
@@ -12,11 +13,10 @@ function RouteContainer({ routes }) {
   )
 }
 
+export default RouteContainer
+
 const CardContainer = styled.ul`
     display:flex;
     flex-direction:column;
 
 `
-
-
-export default RouteContainer

@@ -19,6 +19,9 @@ function Navbar({ user, setUser}) {
         <NavLink to="/">Home</NavLink>
       </div>
       <div>
+        <NavLink to="/routes">Routes</NavLink>
+      </div>
+      <div>
         {user ? (
           <button onClick={handleLogoutClick}>Logout</button>
         ) : (
