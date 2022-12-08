@@ -1,40 +1,57 @@
 import { useParams } from 'react-router-dom';
+import ReviewContainer from './ReviewContainer'
+import styled from "styled-components";
 
 function RouteDetails( {routes} ) {
   const params = useParams()
 
-  const details = routes.find((route) => {
-    return parseInt(params.id) === route.id
-  })
+  const details = routes.find((route) => parseInt(params.id) === route.id)
 
-  // try to catch error VV (none of the ones below are working)
-  
-  // const details = routes.find((route) => {
-  //   try {
-  //     return parseInt(params.id) === route.id
-  //   } catch(e) {
-  //     Rollbar.error("Something went wrong", e) 
-  //   }
-  // })
+  function checkDetails() {
+    if (details) {
+      return (
+        <div>
+          <h2>{details['name']}</h2>
+          <img src={details['image_url']} alt="mapPhoto"/>
+          <h3>{details['location']}</h3>
+          <h4>{details['time']}</h4>
+          <h5>{details['distance']} miles</h5>
+          <ReviewContainer />
+      </div>
+      )
+    }else {
+      return null
+    }
+  }
 
-  // const details = routes.find((route) => {
-  //   if (typeof(route) === undefined) {
-  //     return 'error'
-  //   } else {
-  //     return parseInt(params.id) === route.id
-  //   }
-  // })
+  return(checkDetails())
 
-
-  return (
-    <div>
-      <h1>{details['name']}</h1>
-      <img src={details['image_url']} alt="mapPhoto"/>
-      <h2>{details['location']}</h2>
-      <h3>{details['time']}</h3>
-      <h3>{details['distance']} miles</h3>
-    </div>
-  )
 }
 
 export default RouteDetails;
+
+// const Wrapper = styled.section`
+//   max-width: 1000px;
+//   margin: 40px auto;
+//   padding: 16px;
+//   display: flex;
+//   gap: 24px;
+// `;
+
+// const WrapperChild = styled.div`
+//   flex: 1;
+// `;
+
+//   return (
+//     <Wrapper>
+//       <WrapperChild>
+//         <h2>{details['name']}</h2>
+//         <img src={details['image_url']} alt="mapPhoto"/>
+//         <h3>{details['location']}</h3>
+//         <h4>{details['time']}</h4>
+//         <h5>{details['distance']} miles</h5>
+//         <ReviewContainer />
+//       </WrapperChild>
+//     </Wrapper>
+//   )
+// }

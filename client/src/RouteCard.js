@@ -3,11 +3,12 @@ import styled from "styled-components";
 import { Link } from 'react-router-dom';
 
 function RouteCard({ route }) {
-  const {name, image_url, location, time, distance,id} = route
+  const {name, image_url, id} = route
 
   return (
     <Wrapper>
       <WrapperChild>
+        <h2>{name}</h2>
         <Link to={`/routes/${id}`}><img src={image_url} alt="routephoto"/></Link>
       </WrapperChild>
     </Wrapper>

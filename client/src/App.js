@@ -12,7 +12,7 @@ import RouteDetails from './RouteDetails'
 function App() {
   const [user, setUser] = useState(null);
   const [routes, setRoutes] = useState([]);
-  const [reviews, setReviews] = useState([]);
+  // const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     fetch('/me').then((r) => {
@@ -28,11 +28,11 @@ function App() {
     .then(setRoutes)
   },[])
 
-  useEffect(() => {
-    fetch('/reviews')
-    .then((r)=> r.json())
-    .then(setReviews)
-  },[])
+  // useEffect(() => {
+  //   fetch('/reviews')
+  //   .then((r)=> r.json())
+  //   .then(setReviews)
+  // },[])
 
   return (
     <div>
@@ -41,7 +41,7 @@ function App() {
         <Route exact path="/" element={<Home user={user} />}/>
         <Route exact path="/signup" element={<Signup setUser={setUser}/>} />
         <Route exact path="/login" element={<Login setUser={setUser}/>} />
-        <Route exact path="/routes" element={<RouteContainer routes={routes} reviews={reviews}/>}/>
+        <Route exact path="/routes" element={<RouteContainer routes={routes} />}/>
         <Route exact path="/routes/:id" element={<RouteDetails routes={routes}/>}/>
       </Routes>
     </div>
