@@ -15,6 +15,23 @@ class ReviewsController < ApplicationController
     render json: Review.create!(review_params), status: :created 
   end
 
+  def update
+    review = Review.find(params[:id])
+    render json: review.update!(review_params), status: :created
+  end
+
+  def destroy
+    review = Review.find(params[:id])
+    review.destroy
+    head :no_content
+  end
+
+  # maybe dont use this
+
+  # def user_reviews
+  #   logged_in_user_reviews = Review.joins(:user).where(:user => {:id => params[:id]})
+  # end
+
   private
 
   def review_params

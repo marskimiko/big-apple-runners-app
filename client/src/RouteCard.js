@@ -1,33 +1,21 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from "styled-components";
 import Card  from 'react-bootstrap/Card';
+import RouteDetails from './RouteDetails'
+import { Link } from 'react-router-dom';
 
 function RouteCard({ route }) {
   const {name, image_url, location, time, distance} = route
 
-  const styles = {
-    main: {
-      display: "flex",
-      width: "18rem",
-      flexWrap: "wrap",
-      justifyContent: "center",
-      alignItems: "center",
-      alignContent: "center"
-    }
-  }
-
   return (
-    // <Card className="d-flex flex-row bd-highlight mb-3" style={styles.main}>
-    //   <Card.Title>{name}</Card.Title>
-    //   <Card.Img src={image_url}/>
-    //   <Card.Text>{location}</Card.Text>
-    //   <Card.Text>{time}</Card.Text>
-    //   <Card.Text>{distance} miles</Card.Text>
-    // </Card>
     <Wrapper>
       <WrapperChild>
+        <Link to="/routes/:id">details</Link>
         <h1>{name}</h1>
-        <a href="/routes/:id"><img src={image_url} alt="routephoto"/></a>
+        <img src={image_url} alt="routephoto"/>
+        {/* <Routes>
+        <Route exact path="/routes/:id" element={<RouteDetails routes={route}/>}/>
+        </Routes> */}
         <h2>{location}</h2>
         <h2>{time}</h2>
         <h3>{distance}</h3>
