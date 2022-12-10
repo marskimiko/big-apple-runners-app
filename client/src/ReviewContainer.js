@@ -1,5 +1,4 @@
 import NewReview from './NewReview';
-
 import ReviewCard from './ReviewCard'
 
 function ReviewContainer({detailReviews}) {
@@ -13,7 +12,7 @@ function ReviewContainer({detailReviews}) {
           </div>
         )
       })}
-      <NewReview />
+      <NewReview detailReviews={detailReviews}/>
     </div>
   )
 }
