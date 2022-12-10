@@ -2,7 +2,7 @@ import RouteCard from './RouteCard'
 
 
 
-function RouteContainer({ routes, onQuery }) {
+function RouteContainer({ routes }) {
 
   return (
     <div classname="routes">

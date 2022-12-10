@@ -1,32 +1,22 @@
-// import React, { useState, useEffect } from 'react';
-
-// function ReviewContainer({route}) {
-//   const runnerReviews = route.reviews
-
-//   const renderReviews = runnerReviews.map((runnerReview) => {
-//     console.log(runnerReview)
-//     return (
-//       <div>
-//         <h1>{runnerReview.title}</h1>
-//         <h2>{runnerReview.body}</h2>
-//       </div>
-//     )
-//   })
-  
-
-//   return (
-//     <div>
-//       <h1>{renderReviews}</h1>
-//     </div>
-//   )
-
-
-// }
-
-// export default ReviewContainer;
-
-// runnerReview.forEach(review => {
-//   for (let key in review) {
-//     console.log(`${key}: ${review[key]}`)
-//   }
+// const renderReviews = detailReviews.map((detailReview) => {
+//   return detailReview
 // })
+
+import ReviewCard from './ReviewCard'
+
+function ReviewContainer({detailReviews}) {
+  
+  return (
+    <div classname="reviews">
+      {detailReviews.map((detailReview) => {
+        return (
+          <div>
+            <ReviewCard detailReview={detailReview}/>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+export default ReviewContainer;

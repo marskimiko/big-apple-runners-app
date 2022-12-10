@@ -6,51 +6,16 @@ function RouteDetails( {routes} ) {
   const params = useParams()
 
   const details = routes.find((route) => parseInt(params.id) === route.id)
-  console.log(details)
+
   // debugger
 
   const detailReviews = details['reviews']
-  console.log('detailReviews',detailReviews)
 
-  // const runnerReviews = routes.filter(route => {
-  //   return route.reviews
-  //   // console.log('route:',route.reviews)
+  // const renderReviews = detailReviews.map((detailReview) => {
+  //   return detailReview
   // })
 
-  // console.log('review',runnerReviews)
-
-
-  // const renderReviews = runnerReviews.forEach(runnerReview => {
-  //   console.log(runnerReview)    
-  // })
-
-  // const renderReviews = runnerReviews.forEach(runnerReview => {
-  //   return runnerReview
-  // })
-
-  // const reviewList = renderReviews.forEach(review => {
-  //   for (let key in review) {
-  //     console.log(`${key}: ${review[key]}`)
-  //   }
-  // })
-
-  // function renderReviews() {
-  //   runnerArray = runnerReviews.filter((review) => {
-  //     const 
-  //   })
-  // }
-
-  // const renderReviews = runnerReviews.forEach(runnerReview => {
-  //   runnerReview.forEach(review => {
-  //     for (let key in review) {
-  //       return (`${key}: ${review[key]}`)
-  //     }
-  //   })
-  // })
-
-  // console.log(renderReviews)
-
-  // console.log('render reviews:',renderReviews)
+  // console.log('renderReviews', renderReviews)
 
   function checkDetails() {
     if (details) {
@@ -61,7 +26,7 @@ function RouteDetails( {routes} ) {
           <h3>{details['location']}</h3>
           <h4>{details['time']}</h4>
           <h5>{details['distance']} miles</h5>
-          {/* <div>{details['reviews']}</div> */}
+          <ReviewContainer detailReviews={detailReviews}/>
       </div>
       )
     }else {
