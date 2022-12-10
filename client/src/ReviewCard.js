@@ -1,17 +1,18 @@
-import styled from "styled-components";
+// import styled from "styled-components";
 
-function ReviewCard({ review }) {
-  const {title, body} = review;
+// function ReviewCard({ route }) {
+//   const reviews = (route.reviews)
 
-  return (
-    <div>
-      <h3>{title}</h3>
-      <h4>{body}</h4>
-    </div>
-  )
-}
+//   console.log(reviews)
 
-export default ReviewCard;
+//   return (
+//     <div>
+//       <h3></h3>
+//     </div>
+//   )
+// }
+
+// export default ReviewCard;
 
 // const CardContainer = styled.section`
 //   width: 1000px;

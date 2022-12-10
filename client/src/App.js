@@ -22,11 +22,15 @@ function App() {
     });
   }, []);
 
+  // console.log(routes)
+
   useEffect(() => {
     fetch('/routes')
     .then((r) => r.json())
     .then(setRoutes)
   },[])
+
+  
 
   // useEffect(() => {
   //   fetch('/reviews')
