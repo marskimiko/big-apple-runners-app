@@ -1,9 +1,12 @@
 function ReviewCard ({detailReview}) {
   console.log(detailReview)
 
+  const {title, body} = detailReview
+
   return (
     <div>
-      <h1>Review</h1>
+      <h1>{title}</h1>
+      <h2>{body}</h2>
     </div>
   )
 }

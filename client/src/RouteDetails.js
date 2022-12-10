@@ -18,7 +18,7 @@ function RouteDetails( {routes} ) {
   // console.log('renderReviews', renderReviews)
 
   function checkDetails() {
-    if (details) {
+    if (details || detailReviews) {
       return (
         <div>
           <h2>{details['name']}</h2>
