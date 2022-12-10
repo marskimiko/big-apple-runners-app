@@ -7,13 +7,17 @@ function RouteDetails( {routes} ) {
 
   const details = routes.find((route) => parseInt(params.id) === route.id)
   console.log(details)
+  // debugger
 
-  const runnerReviews = routes.filter(route => {
-    return route.reviews
-    // console.log('route:',route.reviews)
-  })
+  const detailReviews = details['reviews']
+  console.log('detailReviews',detailReviews)
 
-  console.log('review',runnerReviews)
+  // const runnerReviews = routes.filter(route => {
+  //   return route.reviews
+  //   // console.log('route:',route.reviews)
+  // })
+
+  // console.log('review',runnerReviews)
 
 
   // const renderReviews = runnerReviews.forEach(runnerReview => {
@@ -57,7 +61,7 @@ function RouteDetails( {routes} ) {
           <h3>{details['location']}</h3>
           <h4>{details['time']}</h4>
           <h5>{details['distance']} miles</h5>
-          <div></div>
+          {/* <div>{details['reviews']}</div> */}
       </div>
       )
     }else {
