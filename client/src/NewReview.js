@@ -1,8 +1,9 @@
 import React, { useState } from "react"; 
 
-function NewReview( {detailReviews }) {
+function NewReview( { detailReviews }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [reviews, setReviews] = useState(detailReviews);
 
   const newReview = {
     title,
@@ -20,14 +21,23 @@ function NewReview( {detailReviews }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('add review')
+   
+    fetch("/routes/:id", configObj)
+      .then((r) => r.json())
+      .then((review) => {
+        addNewReview(review);
+      });
+  }
+
+  const addNewReview = (review) => {
+    setReviews([...reviews, review])
   }
 
   
   return (
     <div>
       <h3>Write a new review:</h3>
-      <form>
+      <form onSubmit={handleSubmit}>
       <label htmlFor="title">Title:</label>
           <input
             id="title"
@@ -44,6 +54,7 @@ function NewReview( {detailReviews }) {
             value={body}
             onChange={(e) => setBody(e.target.value)}
           ></textarea>
+          <button type="submit">Add Review</button>
       </form>
     </div>
   )
