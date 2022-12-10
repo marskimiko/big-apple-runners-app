@@ -1,6 +1,4 @@
-// const renderReviews = detailReviews.map((detailReview) => {
-//   return detailReview
-// })
+import NewReview from './NewReview';
 
 import ReviewCard from './ReviewCard'
 
@@ -15,6 +13,7 @@ function ReviewContainer({detailReviews}) {
           </div>
         )
       })}
+      <NewReview />
     </div>
   )
 }
