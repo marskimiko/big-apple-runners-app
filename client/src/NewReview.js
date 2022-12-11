@@ -1,20 +1,16 @@
 import React, { useState } from "react";
-import { useParams } from 'react-router-dom' 
+// import { useParams } from 'react-router-dom' 
 
-function NewReview( { detailReviews }) {
+function NewReview( { reviews, setReviews }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [rating, setRating] = useState("");
-  const params = useParams();
-
-  // unsure if this is how I should handle this, ask ben
-  let [reviews, setReviews] = useState(detailReviews);
-
-
-  const newReview = {
-    title,
-    body,
-  };
+  // const params = useParams();
+  
+  // const newReview = {
+  //   title,
+  //   body,
+  // };
 
   const configObj = {
     method: "POST",
@@ -22,22 +18,27 @@ function NewReview( { detailReviews }) {
       Accept: "application/json",
         "Content-Type": "application/json",
     },
-    body: JSON.stringify(newReview)
+    body: JSON.stringify({
+      title,
+      body
+    })
   
   };
 
   const addNewReview = (review) => {
-    console.log('addNewReview',reviews)
     setReviews([...reviews, review])
+    console.log('addNewReview',reviews)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
    
-    fetch(`/routes/${params.id}`, configObj)
+    // fetch(`/routes/${params.id}`, configObj)
+    fetch(`/reviews`, configObj)
       .then((r) => r.json())
       .then((review) => {
         addNewReview(review);
+        console.log('review',review)
       });
   }
 

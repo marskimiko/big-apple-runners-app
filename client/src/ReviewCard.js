@@ -1,6 +1,6 @@
 import EditReview from './EditReview'
 
-function ReviewCard ({detailReview}) {
+function ReviewCard ({detailReview, onUpdateReview }) {
   console.log(detailReview)
 
   const {title, body, rating} = detailReview
@@ -10,7 +10,7 @@ function ReviewCard ({detailReview}) {
       <h1>{title}</h1>
       <h2>{body}</h2>
       <h3>{rating} ⭐️</h3>
-      <EditReview />
+      <EditReview detailReview={detailReview} onUpdateReview={onUpdateReview} />
     </div>
   )
 }
