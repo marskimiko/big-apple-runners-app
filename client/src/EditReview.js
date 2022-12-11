@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-function EditReview({ detailReview, onUpdateReview }) {
+function EditReview({ detailReview, handleUpdateReview }) {
   const { title, body, rating, id } = detailReview;
 
 
@@ -25,7 +25,7 @@ function EditReview({ detailReview, onUpdateReview }) {
    })
     .then ((response) => response.json())
     .then((updatedReview) => {
-      onUpdateReview(updatedReview);
+      handleUpdateReview(updatedReview);
     });
   }
 
