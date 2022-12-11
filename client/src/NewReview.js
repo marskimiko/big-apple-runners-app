@@ -7,16 +7,13 @@ function NewReview( { detailReviews }) {
   const [rating, setRating] = useState("");
   const params = useParams();
 
-  console.log('params', params.id)
-
   // unsure if this is how I should handle this, ask ben
-  const [reviews, setReviews] = useState(detailReviews);
-  console.log('reviews state',reviews);
+  let [reviews, setReviews] = useState(detailReviews);
 
 
   const newReview = {
     title,
-    body
+    body,
   };
 
   const configObj = {
@@ -26,7 +23,13 @@ function NewReview( { detailReviews }) {
         "Content-Type": "application/json",
     },
     body: JSON.stringify(newReview)
+  
   };
+
+  const addNewReview = (review) => {
+    console.log('addNewReview',reviews)
+    setReviews([...reviews, review])
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,10 +39,6 @@ function NewReview( { detailReviews }) {
       .then((review) => {
         addNewReview(review);
       });
-  }
-
-  const addNewReview = (review) => {
-    setReviews([...reviews, review])
   }
 
   

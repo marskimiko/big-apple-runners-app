@@ -1,21 +1,13 @@
 import { useParams } from 'react-router-dom';
 import ReviewContainer from './ReviewContainer'
-import styled from "styled-components";
+// import styled from "styled-components";
 
 function RouteDetails( {routes} ) {
   const params = useParams()
 
   const details = routes.find((route) => parseInt(params.id) === route.id)
 
-  // debugger
-
   const detailReviews = details['reviews']
-
-  // const renderReviews = detailReviews.map((detailReview) => {
-  //   return detailReview
-  // })
-
-  // console.log('renderReviews', renderReviews)
 
   function checkDetails() {
     if (details || detailReviews) {
