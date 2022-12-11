@@ -7,7 +7,7 @@ function ReviewContainer({ detailReviews }) {
   const [reviews, setReviews] = useState(detailReviews);
 
   function onUpdateReview(updatedReview) {
-    const updatedReviews = detailReviews.map((review) => {
+    const updatedReviews = reviews.map((review) => {
       if (review.id === updatedReview.id) {
         return updatedReview;
       } else {
@@ -19,10 +19,16 @@ function ReviewContainer({ detailReviews }) {
 
   return (
     <div classname="reviews">
-      {detailReviews.map((detailReview) => {
+      {reviews.map((review) => {
         return (
           <div>
-            <ReviewCard detailReview={detailReview} key={detailReview.id} onUpdateReview={onUpdateReview}/>
+            <ReviewCard 
+              review={review} 
+              key={review.id} 
+              onUpdateReview={onUpdateReview}
+              reviews={reviews}
+              setReviews={setReviews}
+              />
           </div>
         )
       })}

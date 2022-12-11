@@ -1,23 +1,33 @@
 import EditReview from './EditReview'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from "react";
 
-function ReviewCard ({detailReview, onUpdateReview }) {
+function ReviewCard ({review, onUpdateReview, reviews, setReviews }) {
 
-  const {title, body, rating} = detailReview
+  const {title, body, rating, id} = review;
 
   const handleUpdateReview = (updatedReview) => {
     onUpdateReview(updatedReview);
   }
 
-  // useEffect(() => {
-  // }, [detailReview])
+  const handleDelete = () => {
+    // deleteListing(id);
+    fetch(`/reviews/${id}`, {
+      method: 'DELETE',
+    });
+    const updatedReviews = reviews.filter((review) => review.id !== id);
+    setReviews(updatedReviews);
+  };
+
+  useEffect(() => {
+  }, [review])
 
   return (
     <div>
       <h1>{title}</h1>
       <h2>{body}</h2>
       <h3>{rating} ⭐️</h3>
-      <EditReview detailReview={detailReview} onUpdateReview={onUpdateReview} handleUpdateReview={handleUpdateReview} />
+      <button onClick={handleDelete}>🗑</button>
+      <EditReview review={review} onUpdateReview={onUpdateReview} handleUpdateReview={handleUpdateReview} />
     </div>
   )
 }

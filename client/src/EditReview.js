@@ -3,8 +3,8 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-function EditReview({ detailReview, handleUpdateReview }) {
-  const { title, body, rating, id } = detailReview;
+function EditReview({ review, handleUpdateReview }) {
+  const { title, body, rating, id } = review;
 
 
   const [formData, setFormData] = useState({
@@ -48,6 +48,13 @@ function EditReview({ detailReview, handleUpdateReview }) {
         type="text"
         name="body"
         value={formData.body}
+        onChange={handleChange}
+      />
+      <Form.Label htmlFor="body ">Rating:</Form.Label>
+      <Form.Control
+        type="text"
+        name="rating"
+        value={formData.rating}
         onChange={handleChange}
       />
       <Button variant="success" type="submit">
