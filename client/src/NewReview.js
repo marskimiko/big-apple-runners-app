@@ -1,9 +1,13 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
+import { useParams } from 'react-router-dom' 
 
 function NewReview( { detailReviews }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [rating, setRating] = useState("");
+  const params = useParams();
+
+  console.log('params', params.id)
 
   // unsure if this is how I should handle this, ask ben
   const [reviews, setReviews] = useState(detailReviews);
@@ -16,7 +20,7 @@ function NewReview( { detailReviews }) {
   };
 
   const configObj = {
-    mothod: "POST",
+    method: "POST",
     headers: {
       Accept: "application/json",
         "Content-Type": "application/json",
@@ -27,7 +31,7 @@ function NewReview( { detailReviews }) {
   const handleSubmit = (e) => {
     e.preventDefault();
    
-    fetch("/routes/:id", configObj)
+    fetch(`/routes/${params.id}`, configObj)
       .then((r) => r.json())
       .then((review) => {
         addNewReview(review);
