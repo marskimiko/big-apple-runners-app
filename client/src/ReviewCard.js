@@ -1,15 +1,16 @@
 import EditReview from './EditReview'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 function ReviewCard ({detailReview, onUpdateReview }) {
 
   const {title, body, rating} = detailReview
-  const [isEdit, setIsEdit] = useState(false)
 
   const handleUpdateReview = (updatedReview) => {
-    setIsEdit(false);
     onUpdateReview(updatedReview);
   }
+
+  // useEffect(() => {
+  // }, [detailReview])
 
   return (
     <div>
