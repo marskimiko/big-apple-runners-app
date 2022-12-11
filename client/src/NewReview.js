@@ -3,7 +3,12 @@ import React, { useState } from "react";
 function NewReview( { detailReviews }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [rating, setRating] = useState("");
+
+  // unsure if this is how I should handle this, ask ben
   const [reviews, setReviews] = useState(detailReviews);
+  console.log('reviews state',reviews);
+
 
   const newReview = {
     title,
@@ -53,6 +58,14 @@ function NewReview( { detailReviews }) {
             name="body"
             value={body}
             onChange={(e) => setBody(e.target.value)}
+          ></textarea>
+        <label htmlFor="rating">Enter rate 1-5:</label>
+          <textarea
+            id="body"
+            type="text"
+            name="body"
+            value={rating}
+            onChange={(e) => setRating(e.target.value)}
           ></textarea>
           <button type="submit">Add Review</button>
       </form>
