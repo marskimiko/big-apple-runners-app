@@ -1,3 +1,5 @@
+import EditReview from './EditReview'
+
 function ReviewCard ({detailReview}) {
   console.log(detailReview)
 
@@ -8,6 +10,7 @@ function ReviewCard ({detailReview}) {
       <h1>{title}</h1>
       <h2>{body}</h2>
       <h3>{rating} ⭐️</h3>
+      <EditReview />
     </div>
   )
 }
