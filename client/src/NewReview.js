@@ -7,10 +7,10 @@ function NewReview( { reviews, setRoutes, routes }) {
   const [rating, setRating] = useState("");
   const params = useParams();
   
-  // const newReview = {
-  //   title,
-  //   body,
-  // };
+  const newReview = {
+    title,
+    body,
+  };
 
   const configObj = {
     method: "POST",
@@ -18,10 +18,7 @@ function NewReview( { reviews, setRoutes, routes }) {
       Accept: "application/json",
         "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      title,
-      body
-    })
+    body: JSON.stringify(newReview)
   
   };
 
