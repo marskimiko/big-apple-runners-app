@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import { useParams } from 'react-router-dom' 
 
-function NewReview( { reviews, setReviews }) {
+function NewReview( { reviews, setReviews, setRoutes, routes }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [rating, setRating] = useState("");
@@ -24,6 +24,14 @@ function NewReview( { reviews, setReviews }) {
     })
   
   };
+
+  
+
+
+
+  // go through the routes to find the route im interested it
+  // update route by adding a review
+  //  set routes will all the other routes and this updated routes
 
   const addNewReview = (review) => {
     setReviews([...reviews, review])

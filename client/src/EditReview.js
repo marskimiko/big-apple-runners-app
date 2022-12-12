@@ -26,6 +26,7 @@ function EditReview({ review, handleUpdateReview }) {
     .then ((response) => response.json())
     .then((updatedReview) => {
       handleUpdateReview(updatedReview);
+      // window.location.reload(false)
     });
   }
 

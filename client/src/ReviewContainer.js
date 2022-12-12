@@ -2,7 +2,7 @@ import NewReview from './NewReview';
 import ReviewCard from './ReviewCard'
 import React, { useState } from 'react';
 
-function ReviewContainer({ detailReviews }) {
+function ReviewContainer({ detailReviews, setRoutes, routes }) {
   // unsure if this is how I should handle this, ask ben
   const [reviews, setReviews] = useState(detailReviews);
 
@@ -32,7 +32,7 @@ function ReviewContainer({ detailReviews }) {
           </div>
         )
       })}
-      <NewReview detailReviews={detailReviews} reviews={reviews} setReviews={setReviews} />
+      <NewReview detailReviews={detailReviews} reviews={reviews} setReviews={setReviews} setRoutes={setRoutes} routes={routes}/>
     </div>
   )
 }

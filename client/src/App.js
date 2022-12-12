@@ -37,7 +37,7 @@ function App() {
         <Route exact path="/signup" element={<Signup setUser={setUser}/>} />
         <Route exact path="/login" element={<Login setUser={setUser}/>} />
         <Route exact path="/routes" element={<RouteContainer routes={routes} />}/>
-        <Route exact path="/routes/:id" element={<RouteDetails routes={routes}/>}/>
+        <Route exact path="/routes/:id" element={<RouteDetails routes={routes} setRoutes={setRoutes} />}/>
       </Routes>
     </div>
   );

@@ -2,15 +2,18 @@ import { useParams } from 'react-router-dom';
 import ReviewContainer from './ReviewContainer'
 // import styled from "styled-components";
 
-function RouteDetails( {routes} ) {
+function RouteDetails( {routes, setRoutes} ) {
   const params = useParams()
 
   const details = routes.find((route) => parseInt(params.id) === route.id)
+  console.log(details)
 
-  const detailReviews = details['reviews']
+  // 
+
+  // const detailReviews = details['reviews']
 
   function checkDetails() {
-    if (details || detailReviews) {
+    if (details) {
       return (
         <div>
           <h2>{details['name']}</h2>
@@ -18,7 +21,7 @@ function RouteDetails( {routes} ) {
           <h3>{details['location']}</h3>
           <h4>{details['time']}</h4>
           <h5>{details['distance']} miles</h5>
-          <ReviewContainer detailReviews={detailReviews}/>
+          <ReviewContainer detailReviews={details['reviews']} setRoutes={setRoutes} routes={routes}/>
       </div>
       )
     }else {
