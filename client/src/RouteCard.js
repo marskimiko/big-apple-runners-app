@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from 'react-router-dom';
 
 function RouteCard({ route }) {
-  const {name, image_url, id} = route
+  const {name, image_url, id} = route;
 
   return (
     <Wrapper>

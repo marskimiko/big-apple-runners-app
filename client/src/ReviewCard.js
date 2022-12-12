@@ -1,5 +1,5 @@
 import EditReview from './EditReview'
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 function ReviewCard ({review, onUpdateReview, reviews, setReviews }) {
 

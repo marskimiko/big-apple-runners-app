@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-// import { useParams } from 'react-router-dom' 
+import { useParams } from 'react-router-dom' 
 
-function NewReview( { reviews, setReviews, setRoutes, routes }) {
+function NewReview( { reviews, setRoutes, routes }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [rating, setRating] = useState("");
-  // const params = useParams();
+  const params = useParams();
   
   // const newReview = {
   //   title,
@@ -25,24 +25,24 @@ function NewReview( { reviews, setReviews, setRoutes, routes }) {
   
   };
 
-  
-
-
-
-  // go through the routes to find the route im interested it
-  // update route by adding a review
-  //  set routes will all the other routes and this updated routes
-
-  const addNewReview = (review) => {
-    setReviews([...reviews, review])
-    console.log('addNewReview',reviews)
+    const addNewReview = (review) => {
+      const newRoutes = routes.map((route) => {
+        if (parseInt(params.id) === route.id) {
+          const newReviews = [...route.reviews, review]
+          route.reviews = newReviews
+          return route;
+        } else {
+          return routes
+        }
+      })
+      setRoutes(newRoutes)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
    
-    // fetch(`/routes/${params.id}`, configObj)
-    fetch(`/reviews`, configObj)
+    fetch(`/routes/${params.id}`, configObj)
+    // fetch(`/reviews`, configObj)
       .then((r) => r.json())
       .then((review) => {
         addNewReview(review);
