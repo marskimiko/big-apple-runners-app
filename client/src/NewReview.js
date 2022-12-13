@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom' 
 
 function NewReview( { reviews, setRoutes, routes }) {
@@ -29,7 +29,7 @@ function NewReview( { reviews, setRoutes, routes }) {
           route.reviews = newReviews
           return route;
         } else {
-          return routes
+          return route;
         }
       })
       setRoutes(newRoutes)
@@ -46,6 +46,9 @@ function NewReview( { reviews, setRoutes, routes }) {
         console.log('review',review)
       });
   }
+
+  useEffect(() => {
+  }, [routes])
 
   
   return (
