@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom' 
 
-function NewReview( { reviews, setRoutes, routes }) {
+function NewReview( { setRoutes, routes }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [rating, setRating] = useState("");
@@ -33,6 +33,7 @@ function NewReview( { reviews, setRoutes, routes }) {
         }
       })
       setRoutes(newRoutes)
+      console.log('newroutes',newRoutes)
   }
 
   const handleSubmit = (e) => {

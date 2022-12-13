@@ -1,38 +1,42 @@
-import NewReview from './NewReview';
+// import NewReview from './NewReview';
 import ReviewCard from './ReviewCard'
 import React, { useState } from 'react';
 
 function ReviewContainer({ detailReviews, setRoutes, routes }) {
   // unsure if this is how I should handle this, ask ben
-  const [reviews, setReviews] = useState(detailReviews);
+  // const [reviews, setReviews] = useState(detailReviews);
+
+  console.log('detailreviews container', detailReviews)
+
+  // console.log('reviews container', reviews)
 
   function onUpdateReview(updatedReview) {
-    const updatedReviews = reviews.map((review) => {
+    const updatedReviews = detailReviews.map((review) => {
       if (review.id === updatedReview.id) {
         return updatedReview;
       } else {
         return review;
       }
     });
-    setReviews(updatedReviews);
+    setRoutes(updatedReviews);
   }
 
   return (
     <div classname="reviews">
-      {reviews.map((review) => {
+      {detailReviews.map((review) => {
         return (
           <div>
             <ReviewCard 
               review={review} 
               key={review.id} 
               onUpdateReview={onUpdateReview}
-              reviews={reviews}
-              setReviews={setReviews}
+              routes={routes}
+              setRoutes={setRoutes}
               />
           </div>
         )
       })}
-      <NewReview detailReviews={detailReviews} reviews={reviews} setReviews={setReviews} setRoutes={setRoutes} routes={routes}/>
+      {/* <NewReview detailReviews={detailReviews} reviews={reviews} setReviews={setReviews} setRoutes={setRoutes} routes={routes}/> */}
     </div>
   )
 }

@@ -12,6 +12,8 @@ import RouteDetails from './RouteDetails'
 function App() {
   const [user, setUser] = useState(null);
   const [routes, setRoutes] = useState([]);
+
+  console.log('routes in app', routes)
   // const [reviews, setReviews] = useState([]);
 
   useEffect(() => {

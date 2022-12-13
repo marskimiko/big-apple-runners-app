@@ -1,12 +1,13 @@
 import { useParams } from 'react-router-dom';
 import ReviewContainer from './ReviewContainer'
+import NewReview from './NewReview';
 // import styled from "styled-components";
 
 function RouteDetails( {routes, setRoutes} ) {
   const params = useParams()
 
   const details = routes.find((route) => parseInt(params.id) === route.id)
-  console.log(details)
+  console.log('details',details)
 
   // 
 
@@ -22,6 +23,7 @@ function RouteDetails( {routes, setRoutes} ) {
           <h4>{details['time']}</h4>
           <h5>{details['distance']} miles</h5>
           <ReviewContainer detailReviews={details['reviews']} setRoutes={setRoutes} routes={routes}/>
+          <NewReview setRoutes={setRoutes} routes={routes}/>
       </div>
       )
     }else {
