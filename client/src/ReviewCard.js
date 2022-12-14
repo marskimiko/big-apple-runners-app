@@ -1,13 +1,13 @@
 import EditReview from './EditReview'
-import React, { useEffect } from "react";
 
 function ReviewCard ({review, onUpdateReview, reviews, setReviews, routes, setRoutes }) {
 
   const {title, body, rating, id} = review;
 
-  // const handleUpdateReview = (updatedReview) => {
-  //   onUpdateReview(updatedReview);
-  // }
+  const handleUpdateReview = (updatedReview) => {
+    onUpdateReview(updatedReview);
+    // console.log('updatedReview', updatedReview);
+  }
 
   // const handleDelete = () => {
   //   // deleteListing(id);
@@ -27,7 +27,7 @@ function ReviewCard ({review, onUpdateReview, reviews, setReviews, routes, setRo
       <h2>{body}</h2>
       <h3>{rating} ⭐️</h3>
       <button>🗑</button>
-      <EditReview review={review} />
+      <EditReview review={review} handleUpdateReview={handleUpdateReview} key={id}/>
     </div>
   )
 }

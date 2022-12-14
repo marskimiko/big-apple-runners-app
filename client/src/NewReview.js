@@ -23,6 +23,7 @@ function NewReview( { setRoutes, routes }) {
   };
 
     const addNewReview = (review) => {
+      console.log('review', review)
       const newRoutes = routes.map((route) => {
         if (parseInt(params.id) === route.id) {
           const newReviews = [...route.reviews, review]
@@ -33,7 +34,6 @@ function NewReview( { setRoutes, routes }) {
         }
       })
       setRoutes(newRoutes)
-      console.log('newroutes',newRoutes)
   }
 
   const handleSubmit = (e) => {

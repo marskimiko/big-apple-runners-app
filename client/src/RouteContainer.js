@@ -3,7 +3,7 @@ import RouteCard from './RouteCard'
 function RouteContainer({ routes }) {
 
   return (
-    <div classname="routes">
+    <div className="routes">
       {routes.map((route) => {
         return (
           <div>

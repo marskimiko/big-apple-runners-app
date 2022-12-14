@@ -13,7 +13,7 @@ function EditReview({ review, handleUpdateReview }) {
     rating: rating
   });
 
-  function handleEditReview(e) {
+  function handleSubmitEditReview(e) {
     e.preventDefault();
 
     fetch(`/reviews/${id}`, {
@@ -26,7 +26,8 @@ function EditReview({ review, handleUpdateReview }) {
     .then ((response) => response.json())
     .then((updatedReview) => {
       handleUpdateReview(updatedReview);
-      // window.location.reload(false)
+      
+      console.log('updated review',updatedReview);
     });
   }
 
@@ -36,7 +37,7 @@ function EditReview({ review, handleUpdateReview }) {
   
   return (
     <Container>
-    <Form onSubmit={handleEditReview}>
+    <Form onSubmit={handleSubmitEditReview}>
       <Form.Label htmlFor="title">Title:</Form.Label>
       <Form.Control
         type="text"
