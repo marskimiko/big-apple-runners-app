@@ -1,45 +1,36 @@
 // import NewReview from './NewReview';
 import ReviewCard from './ReviewCard'
 // import React, { useState } from 'react';
-import { useParams } from 'react-router-dom' 
+import { useParams } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 function ReviewContainer({ detailReviews, setRoutes, routes }) {
   const params = useParams();
-  // unsure if this is how I should handle this, ask ben
-  // const [reviews, setReviews] = useState(detailReviews);
+  // console.log('review container', routes)
+  // console.log('detail reviews in review container', detailReviews)
 
-  // console.log('detailreviews container', detailReviews)
-
-  // console.log('reviews container', reviews)
-
-  // function onUpdateReview(updatedReview) {
-  //   const updatedReviews = detailReviews.map((review) => {
-  //     if (review.id === updatedReview.id) {
-  //       return updatedReview;
-  //     } else {
-  //       return review;
-  //     }
-  //   });
-  //   setRoutes(updatedReviews);
-  // }
 
   function onUpdateReview (updatedReview) {
-    // debugger
+
     const updatedReviews = routes.map((route) => {
       if (parseInt(params.id) === route.id) {
-        // debugger
+        // issue maybe happening in here for why route wont update
+
         const editedReview = [...route.reviews, updatedReview]
         route.reviews = editedReview
         return route
+        // console.log(route)
       } else {
         return route;
       }
     })
     setRoutes(updatedReviews);
+    console.log('updated reviews', updatedReviews)
   }
 
+  console.log('review container', routes)
   return (
-    <div className="reviews">
+    <div className="container">
       {detailReviews.map((review) => {
         return (
           <div>
@@ -53,7 +44,6 @@ function ReviewContainer({ detailReviews, setRoutes, routes }) {
           </div>
         )
       })}
-      {/* <NewReview detailReviews={detailReviews} reviews={reviews} setReviews={setReviews} setRoutes={setRoutes} routes={routes}/> */}
     </div>
   )
 }

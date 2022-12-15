@@ -7,6 +7,7 @@ function NewReview( { setRoutes, routes }) {
   const [rating, setRating] = useState("");
   const params = useParams();
   
+  
   const newReview = {
     title,
     body,
@@ -23,7 +24,7 @@ function NewReview( { setRoutes, routes }) {
   };
 
     const addNewReview = (review) => {
-      console.log('review', review)
+  
       const newRoutes = routes.map((route) => {
         if (parseInt(params.id) === route.id) {
           const newReviews = [...route.reviews, review]

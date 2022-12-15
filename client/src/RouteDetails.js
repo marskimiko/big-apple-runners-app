@@ -6,12 +6,8 @@ import NewReview from './NewReview';
 function RouteDetails( {routes, setRoutes} ) {
   const params = useParams()
 
+
   const details = routes.find((route) => parseInt(params.id) === route.id)
-  console.log('details',details)
-
-  // 
-
-  // const detailReviews = details['reviews']
 
   function checkDetails() {
     if (details) {

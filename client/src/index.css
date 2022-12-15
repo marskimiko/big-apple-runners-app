@@ -1,4 +1,30 @@
-body {
+/* body {
+  background-color: rgb(150, 185, 244);
+}
+
+.container, .container-fluid {
+  background-color: rgb(255, 255, 255);
+  border: rgb(150, 223, 232) solid 15px;
+  color: rgb(0, 0, 0);
+}
+
+.row {
+  background-color: rgb(182, 221, 240);
+  border: rgb(255, 255, 255) solid 10px;
+}
+
+[class*="col"]{
+  border: black solid 5px;
+  background-color: rgb(100, 0, 228);
+  color: rgb(255, 255, 255);   
+} */
+
+
+
+
+
+
+/* body {
   margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -54,4 +80,4 @@ form input {
 
 form button[type="submit"] {
   width: 40%;
-}
+} */

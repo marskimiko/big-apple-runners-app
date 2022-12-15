@@ -1,31 +1,29 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Stack from 'react-bootstrap/Stack';
+
 
 function RouteCard({ route }) {
   const {name, image_url, id} = route;
 
   return (
-    <Wrapper>
-      <WrapperChild>
-        <h2>{name}</h2>
-        <Link to={`/routes/${id}`}><img src={image_url} alt="routephoto"/></Link>
-      </WrapperChild>
-    </Wrapper>
+    <Stack direction="horizontal" gap={3}>
+    <Card style={{ width: '18rem' }}> 
+      <Card.Img variant="top" src={image_url} />
+      <Card.Body>
+        <Card.Title>{name}</Card.Title>
+        <Link  to={`/routes/${id}`}><Button variant="primary">more info</Button></Link>
+      </Card.Body>
+    </Card>
+    </Stack>
 
   )
 }
 
 export default RouteCard;
-
-const Wrapper = styled.section`
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 16px;
-  display: flex;
-  gap: 24px;
-`;
-
-const WrapperChild = styled.div`
-  flex: 1;
-`;

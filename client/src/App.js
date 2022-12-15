@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './Home'
-import Navbar from './Navbar'
+import Navigation from './Navigation'
 import Signup from './Signup'
 import Login from './Login'
 import RouteContainer from './RouteContainer'
@@ -12,9 +12,6 @@ import RouteDetails from './RouteDetails'
 function App() {
   const [user, setUser] = useState(null);
   const [routes, setRoutes] = useState([]);
-
-  console.log('routes in app', routes)
-  // const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     fetch('/me').then((r) => {
@@ -33,7 +30,7 @@ function App() {
 
   return (
     <div>
-      <Navbar user={user} setUser={setUser} />
+      <Navigation user={user} setUser={setUser} />
         <Routes>
         <Route exact path="/" element={<Home user={user} />}/>
         <Route exact path="/signup" element={<Signup setUser={setUser}/>} />

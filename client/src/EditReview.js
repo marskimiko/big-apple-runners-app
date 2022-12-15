@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useParams } from 'react-router-dom' 
 
 function EditReview({ review, handleUpdateReview }) {
   const { title, body, rating, id } = review;
+  const params = useParams();
 
 
   const [formData, setFormData] = useState({
@@ -17,6 +19,7 @@ function EditReview({ review, handleUpdateReview }) {
     e.preventDefault();
 
     fetch(`/reviews/${id}`, {
+      // fetch(`/routes/${params.id}`, {
     method: "PATCH",
     headers: { 
       'Content-Type': 'application/json',
@@ -26,14 +29,17 @@ function EditReview({ review, handleUpdateReview }) {
     .then ((response) => response.json())
     .then((updatedReview) => {
       handleUpdateReview(updatedReview);
+      console.log('edit review', updatedReview)
       
-      console.log('updated review',updatedReview);
     });
   }
+
 
   function handleChange(e){
     setFormData({...formData, [e.target.name]: e.target.value})
   }
+
+  
   
   return (
     <Container>
