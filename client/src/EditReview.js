@@ -2,13 +2,9 @@ import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { useParams } from 'react-router-dom' 
 
 function EditReview({ review, handleUpdateReview, setIsEdit, isEdit }) {
   const { title, body, rating, id } = review;
-  const params = useParams();
-
-
   const [formData, setFormData] = useState({
     title: title,
     body: body,
@@ -19,7 +15,6 @@ function EditReview({ review, handleUpdateReview, setIsEdit, isEdit }) {
     e.preventDefault();
 
     fetch(`/reviews/${id}`, {
-      // fetch(`/routes/${params.id}`, {
     method: "PATCH",
     headers: { 
       'Content-Type': 'application/json',
@@ -38,11 +33,6 @@ function EditReview({ review, handleUpdateReview, setIsEdit, isEdit }) {
   function handleChange(e){
     setFormData({...formData, [e.target.name]: e.target.value})
   }
-
-  // function handleShow() {
-  //   console.log('close form please')
-  // }
-
   
   
   return (

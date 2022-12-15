@@ -6,11 +6,9 @@ import Card from 'react-bootstrap/Card';
 import { useParams } from 'react-router-dom'
 
 function ReviewCard ({review, onUpdateReview, routes, setRoutes }) {
-  const params = useParams();
-
-
   const {title, body, rating, id} = review;
   const [isEdit, setIsEdit] = useState(false);
+  const params = useParams();
 
   const handleUpdateReview = (updatedReview) => {
     onUpdateReview(updatedReview);
@@ -21,7 +19,6 @@ function ReviewCard ({review, onUpdateReview, routes, setRoutes }) {
       if (parseInt(params.id) === route.id) {
         const reviews = route.reviews;
         const filteredReview = reviews.filter((review) => review.id !== deletedReview);
-        // debugger
         route.reviews = filteredReview
         return route 
       } else {
@@ -33,11 +30,9 @@ function ReviewCard ({review, onUpdateReview, routes, setRoutes }) {
 
 
   const handleDelete = () => {
-    // deleteListing(id);
     fetch(`/reviews/${id}`, {
       method: 'DELETE',
     });
-
     deleteReview(id)
   };
 

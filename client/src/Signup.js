@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 function SignUp({ setUser }) {
   const [username, setUsername] = useState("");
@@ -28,39 +30,46 @@ function SignUp({ setUser }) {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h1>Sign Up</h1>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          autoComplete="off"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+    <Form onSubmit={handleSubmit}>
+    <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Label htmlFor="username">Username</Form.Label>
+      <Form.Control            
+        type="text"
+        id="username"
+        autoComplete="off"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}/>
+    </Form.Group>
+
+    <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Label htmlFor="password">Password</Form.Label>
+      <Form.Control          
+        type="password"
+        id="password"
+        autoComplete="current-password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)} 
         />
-        <br></br>
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          autoComplete="current-password"
+    </Form.Group>
+
+    <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Label htmlFor="password">Confirm Password</Form.Label>
+      <Form.Control          
+        type="password"
+        id="password_confirmation"
+        autoComplete="current-password"
+        placeholder="Password"
+        value={passwordConfirmation}
+        onChange={(e) => setPasswordConfirmation(e.target.value)} 
         />
-        <br></br>
-        <label htmlFor="password">Password Confirmation</label>
-        <input
-          type="password"
-          id="password_confirmation"
-          value={passwordConfirmation}
-          onChange={(e) => setPasswordConfirmation(e.target.value)}
-          autoComplete="current-password"
-        />
-        <br></br>
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
+    </Form.Group>
+
+    <Button variant="primary" type="submit">
+      Login
+    </Button>
+  </Form>
   );
 }
 

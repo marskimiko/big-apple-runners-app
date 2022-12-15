@@ -6,10 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ReviewContainer({ detailReviews, setRoutes, routes }) {
   const params = useParams();
-  // console.log('review container', routes)
-  // console.log('detail reviews in review container', detailReviews)
-
-
+  
   function onUpdateReview (updatedReview) {
 
     const updatedRoutes = routes.map((route) => {
@@ -22,11 +19,9 @@ function ReviewContainer({ detailReviews, setRoutes, routes }) {
           } else {
             return review;
           }
-        })
-        
+        })       
         route.reviews = reviewsMap
         return route
-
       } else {
         return route;
       }
