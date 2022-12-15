@@ -12,23 +12,29 @@ function ReviewContainer({ detailReviews, setRoutes, routes }) {
 
   function onUpdateReview (updatedReview) {
 
-    const updatedReviews = routes.map((route) => {
+    const updatedRoutes = routes.map((route) => {
       if (parseInt(params.id) === route.id) {
-        // issue maybe happening in here for why route wont update
-
-        const editedReview = [...route.reviews, updatedReview]
-        route.reviews = editedReview
+        const reviews = route.reviews;
+        
+        const reviewsMap = reviews.map((review) => {
+          if (review.id === updatedReview.id) {
+            return updatedReview
+          } else {
+            return review;
+          }
+        })
+        
+        route.reviews = reviewsMap
         return route
-        // console.log(route)
+
       } else {
         return route;
       }
     })
-    setRoutes(updatedReviews);
-    console.log('updated reviews', updatedReviews)
+    setRoutes(updatedRoutes);
   }
 
-  console.log('review container', routes)
+
   return (
     <div className="container">
       {detailReviews.map((review) => {

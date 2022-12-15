@@ -6,7 +6,7 @@ function RouteContainer({ routes }) {
     <div className="routes">
       {routes.map((route) => {
         return (
-          <div>
+          <div className="container">
             <RouteCard key={route.id} route={route} />
           </div>
         )

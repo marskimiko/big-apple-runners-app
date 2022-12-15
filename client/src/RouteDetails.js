@@ -15,6 +15,7 @@ function RouteDetails( {routes, setRoutes} ) {
     if (details) {
       return (
         <div>
+          <div class="container">
           <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" src={details['image_url']} alt="mapPhoto"/>
             <Card.Body>
@@ -26,6 +27,7 @@ function RouteDetails( {routes, setRoutes} ) {
               <ListGroup.Item>Distance: {details['distance']} miles</ListGroup.Item>
             </ListGroup>
           </Card>
+          </div>
 
           <ReviewContainer 
             detailReviews={details['reviews']} 

@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom' 
+import { useParams } from 'react-router-dom'
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form'; 
+import Button from 'react-bootstrap/Button';
 
 function NewReview( { setRoutes, routes }) {
   const [title, setTitle] = useState("");
@@ -11,6 +14,7 @@ function NewReview( { setRoutes, routes }) {
   const newReview = {
     title,
     body,
+    rating
   };
 
   const configObj = {
@@ -54,36 +58,42 @@ function NewReview( { setRoutes, routes }) {
 
   
   return (
-    <div>
-      <h3>Write a new review:</h3>
-      <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Title:</label>
-          <input
-            id="title"
+
+    <Container>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="form.Title">
+          <Form.Label>Title</Form.Label>
+          <Form.Control id="title"
             type="text"
             name="title"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)} 
           />
-        <label htmlFor="body">Body:</label>
-          <textarea
+        </Form.Group>
+        <Form.Group controlId="form.Body">
+          <Form.Label>Body</Form.Label>
+          <Form.Control 
+            as="textarea" 
+            rows={3}             
             id="body"
             type="text"
             name="body"
             value={body}
-            onChange={(e) => setBody(e.target.value)}
-          ></textarea>
-        <label htmlFor="rating">Enter rate 1-5:</label>
-          <textarea
+            onChange={(e) => setBody(e.target.value)} 
+          />
+        </Form.Group>
+        <Form.Group controlId="form.Rating">
+            <Form.Label>Rating: 1-5</Form.Label>
+            <Form.Control 
             id="body"
             type="text"
             name="body"
             value={rating}
-            onChange={(e) => setRating(e.target.value)}
-          ></textarea>
-          <button type="submit">Add Review</button>
-      </form>
-    </div>
+            onChange={(e) => setRating(e.target.value)}/>
+        </Form.Group>
+        <Button type="submit">Add Review</Button>
+      </Form>
+    </Container>
   )
   
 }

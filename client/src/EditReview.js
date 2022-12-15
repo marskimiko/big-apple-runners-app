@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useParams } from 'react-router-dom' 
 
-function EditReview({ review, handleUpdateReview }) {
+function EditReview({ review, handleUpdateReview, setIsEdit, isEdit }) {
   const { title, body, rating, id } = review;
   const params = useParams();
 
@@ -29,7 +29,7 @@ function EditReview({ review, handleUpdateReview }) {
     .then ((response) => response.json())
     .then((updatedReview) => {
       handleUpdateReview(updatedReview);
-      console.log('edit review', updatedReview)
+      setIsEdit(!isEdit)
       
     });
   }
@@ -38,6 +38,10 @@ function EditReview({ review, handleUpdateReview }) {
   function handleChange(e){
     setFormData({...formData, [e.target.name]: e.target.value})
   }
+
+  // function handleShow() {
+  //   console.log('close form please')
+  // }
 
   
   
@@ -53,6 +57,8 @@ function EditReview({ review, handleUpdateReview }) {
       />
       <Form.Label htmlFor="body ">Body:</Form.Label>
       <Form.Control
+        as="textarea"
+        rows={3}
         type="text"
         name="body"
         value={formData.body}
@@ -72,5 +78,7 @@ function EditReview({ review, handleUpdateReview }) {
     </Container>
   );
 }
+
+// onClick={() => setIsEdit((isEdit) => !isEdit)}
 
 export default EditReview;

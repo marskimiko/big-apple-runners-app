@@ -81,3 +81,15 @@ form input {
 form button[type="submit"] {
   width: 40%;
 } */
+
+.container {
+  display: grid;
+  justify-content: space-evenly;
+}
+
+.item {
+  width: 18rem;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
