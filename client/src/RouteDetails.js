@@ -1,7 +1,9 @@
 import { useParams } from 'react-router-dom';
 import ReviewContainer from './ReviewContainer'
 import NewReview from './NewReview';
-// import styled from "styled-components";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 function RouteDetails( {routes, setRoutes} ) {
   const params = useParams()
@@ -13,16 +15,31 @@ function RouteDetails( {routes, setRoutes} ) {
     if (details) {
       return (
         <div>
-          <h2>{details['name']}</h2>
-          <img src={details['image_url']} alt="mapPhoto"/>
-          <h3>{details['location']}</h3>
-          <h4>{details['time']}</h4>
-          <h5>{details['distance']} miles</h5>
-          <ReviewContainer detailReviews={details['reviews']} setRoutes={setRoutes} routes={routes}/>
-          <NewReview setRoutes={setRoutes} routes={routes}/>
+          <Card style={{ width: '18rem' }}>
+            <Card.Img variant="top" src={details['image_url']} alt="mapPhoto"/>
+            <Card.Body>
+              <Card.Title>{details['name']}</Card.Title>
+              <Card.Text>{details['location']}</Card.Text>
+            </Card.Body>
+            <ListGroup className="list-group-flush">
+              <ListGroup.Item>Time: {details['time']}</ListGroup.Item>
+              <ListGroup.Item>Distance: {details['distance']} miles</ListGroup.Item>
+            </ListGroup>
+          </Card>
+
+          <ReviewContainer 
+            detailReviews={details['reviews']} 
+            setRoutes={setRoutes} 
+            routes={routes}
+          />
+
+          <NewReview 
+            setRoutes={setRoutes} 
+            routes={routes}
+          />
       </div>
       )
-    }else {
+    } else {
       return null
     }
   }
@@ -32,29 +49,3 @@ function RouteDetails( {routes, setRoutes} ) {
 }
 
 export default RouteDetails;
-
-// const Wrapper = styled.section`
-//   max-width: 1000px;
-//   margin: 40px auto;
-//   padding: 16px;
-//   display: flex;
-//   gap: 24px;
-// `;
-
-// const WrapperChild = styled.div`
-//   flex: 1;
-// `;
-
-//   return (
-//     <Wrapper>
-//       <WrapperChild>
-//         <h2>{details['name']}</h2>
-//         <img src={details['image_url']} alt="mapPhoto"/>
-//         <h3>{details['location']}</h3>
-//         <h4>{details['time']}</h4>
-//         <h5>{details['distance']} miles</h5>
-//         <ReviewContainer />
-//       </WrapperChild>
-//     </Wrapper>
-//   )
-// }
