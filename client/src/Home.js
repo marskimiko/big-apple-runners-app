@@ -30,8 +30,6 @@ function Home({ user}) {
         <div class="container bg-success p-5">
         <h1 class="display-4">Please Login or Signup!</h1>
         <hr/>
-        <p>click routes in the nav or below to see all routes</p>
-        <a href="/routes" class="btn btn-light">routes</a>
         </div>
       </div>
     )

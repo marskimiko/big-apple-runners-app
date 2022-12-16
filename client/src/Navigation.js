@@ -17,11 +17,15 @@ function Navigation({ user, setUser}) {
       <nav className="navbar navbar-expand-lg navbar-light bg-light"> 
         <NavLink className="nav-link" to="/">Home</NavLink>
   
-        <NavLink to="/routes">Routes</NavLink>
-        <NavLink to="/routes/new">New Route</NavLink>
+        {/* <NavLink to="/routes">Routes</NavLink>
+        <NavLink to="/routes/new">New Route</NavLink> */}
       <li className="nav-link" href="loginoutlink">
         {user ? (
-          <button onClick={handleLogoutClick}>Logout</button>
+          <>
+            <button onClick={handleLogoutClick}>Logout</button>
+            <NavLink to="/routes">Routes</NavLink>
+            <NavLink to="/routes/new">New Route</NavLink>
+          </>
         ) : (
           <>
             <NavLink to="/signup">Sign Up</NavLink>
