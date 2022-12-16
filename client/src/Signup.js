@@ -7,35 +7,40 @@ function SignUp({ setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [errors, setErrors] = useState([])
   const navigate = useNavigate();
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    fetch("/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+  function handleSubmit(e){
+    e.preventDefault()
+    const user = {
         username,
         password,
-        password_confirmation: passwordConfirmation,
-      }),
-    }).then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-        navigate("/routes");
-      }
-    });
+        passwordConfirmation: passwordConfirmation
+    }
+    fetch(`/signup`,{
+      method:'POST',
+      headers:{'Content-Type': 'application/json'},
+      body:JSON.stringify(user)
+    })
+    .then(res => {
+      if(res.ok){
+        res.json().then(user => {
+          setUser(user)
+          navigate("/");
+        })
+        } else {
+          res.json().then(json => setErrors(json.errors))
+        }
+      })  
   }
 
   return (
+    <>
     <Form onSubmit={handleSubmit}>
-    <Form.Group className="mb-3" controlId="formBasicEmail">
-      <Form.Label htmlFor="username">Username</Form.Label>
+    <Form.Group className="mb-3" controlId="form.Username">
+      <Form.Label>Username</Form.Label>
       <Form.Control            
         type="text"
-        id="username"
         autoComplete="off"
         placeholder="Username"
         value={username}
@@ -67,10 +72,32 @@ function SignUp({ setUser }) {
     </Form.Group>
 
     <Button variant="primary" type="submit">
-      Login
+      SignUp
     </Button>
   </Form>
+  {errors?errors.map(e => <div>{e[0]+': ' + e[1]}</div>):null}
+  </>
   );
 }
 
 export default SignUp;
+
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   fetch("/signup", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       username,
+  //       password,
+  //       password_confirmation: passwordConfirmation,
+  //     }),
+  //   }).then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((user) => setUser(user));
+  //       navigate("/routes");
+  //     }
+  //   });
+  // }

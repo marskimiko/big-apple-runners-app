@@ -2,11 +2,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import CardDeck  from 'react-bootstrap/Col';
-
-
 
 function RouteCard({ route }) {
   const {name, image_url, id} = route;

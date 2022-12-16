@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
 import ReviewContainer from './ReviewContainer'
 import NewReview from './NewReview';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 

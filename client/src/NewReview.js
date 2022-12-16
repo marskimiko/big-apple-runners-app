@@ -10,8 +10,7 @@ function NewReview( { setRoutes, routes }) {
   const [rating, setRating] = useState("");
   const params = useParams();
   const [errors, setErrors] = useState([]);
-  
-  
+
     const addNewReview = (review) => {
   
       const newRoutes = routes.map((route) => {
