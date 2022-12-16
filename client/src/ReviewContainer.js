@@ -4,7 +4,7 @@ import ReviewCard from './ReviewCard'
 import { useParams } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 
-function ReviewContainer({ detailReviews, setRoutes, routes }) {
+function ReviewContainer({ detailReviews, setRoutes, routes, user }) {
   const params = useParams();
   
   function onUpdateReview (updatedReview) {
@@ -41,6 +41,7 @@ function ReviewContainer({ detailReviews, setRoutes, routes }) {
               onUpdateReview={onUpdateReview}
               routes={routes}
               setRoutes={setRoutes}
+              user={user}
               />
           </div>
         )

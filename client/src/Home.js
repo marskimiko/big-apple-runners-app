@@ -28,8 +28,9 @@ function Home({ user}) {
     return (
       <div class="container-fluid text-light p-5">
         <div class="container bg-success p-5">
-        <h1 class="display-4">Please Login or Signup!</h1>
+        <h1 class="display-4" style={{ textAlign: "center" }}>Big Apple Runners</h1>
         <hr/>
+        <p style={{ textAlign: "center" }}>Please Login or Signup</p>
         </div>
       </div>
     )

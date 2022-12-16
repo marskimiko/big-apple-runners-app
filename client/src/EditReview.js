@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-function EditReview({ review, handleUpdateReview, setIsEdit, isEdit }) {
+function EditReview({ user, review, handleUpdateReview, setIsEdit, isEdit }) {
   const { title, body, rating, id } = review;
   const [formData, setFormData] = useState({
     title: title,
@@ -28,6 +28,9 @@ function EditReview({ review, handleUpdateReview, setIsEdit, isEdit }) {
       
     });
   }
+
+  // console.log(review.user_id)
+  // console.log(user.id)
 
 
   function handleChange(e){

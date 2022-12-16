@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useParams } from 'react-router-dom'
 
-function ReviewCard ({review, onUpdateReview, routes, setRoutes }) {
+function ReviewCard ({review, onUpdateReview, routes, setRoutes, user }) {
   const {title, body, rating, id} = review;
   const [isEdit, setIsEdit] = useState(false);
   const params = useParams();
@@ -36,7 +36,23 @@ function ReviewCard ({review, onUpdateReview, routes, setRoutes }) {
     deleteReview(id)
   };
 
+  function checkUserEditButton() {
+    if (review.user_id === user.id) {
+      return ( <Button onClick={() => setIsEdit((isEdit) => !isEdit)} type="button" variant="outline-secondary">Edit</Button> )
+    } else {
+      return null
+    }
+  }
 
+  function checkUserDeleteButton() {
+    if (review.user_id === user.id) {
+      return ( <Button variant="outline-secondary" onClick={handleDelete}>🗑</Button> )
+    } else {
+      return null
+    }
+  }
+
+  <Button variant="outline-secondary" onClick={handleDelete}>🗑</Button>
 
   return (
     <div class="reviewcontainer">
@@ -44,18 +60,21 @@ function ReviewCard ({review, onUpdateReview, routes, setRoutes }) {
     <Card className="text-center">
       <Card.Header as="h5">{title}</Card.Header>
       {isEdit ?(
-        <EditReview review={review} handleUpdateReview={handleUpdateReview} key={id} routes={routes} setIsEdit={setIsEdit} isEdit={isEdit}/>
+        <EditReview
+          user={user} 
+          review={review} 
+          handleUpdateReview={handleUpdateReview} 
+          key={id} 
+          routes={routes} 
+          setIsEdit={setIsEdit} 
+          isEdit={isEdit}
+        />
       ) : (
         <Card.Body>
           <Card.Text>{body}</Card.Text>
           <Card.Text>{rating} ⭐️</Card.Text>
-          <Button 
-              onClick={() => setIsEdit((isEdit) => !isEdit)}
-              type="button" 
-              variant="outline-secondary"
-              >Edit
-          </Button>
-          <Button variant="outline-secondary" onClick={handleDelete}>🗑</Button>
+          {checkUserEditButton()}
+          {checkUserDeleteButton()}
         </Card.Body>
       )}
     </Card>

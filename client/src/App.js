@@ -33,6 +33,7 @@ function App() {
     .then(setRoutes)
   },[])
 
+  
   if(errors) return <h1>{errors}</h1>
 
   return (
@@ -43,7 +44,7 @@ function App() {
         <Route exact path="/signup" element={<Signup setUser={setUser}/>} />
         <Route exact path="/login" element={<Login setUser={setUser}/>} />
         <Route exact path="/routes" element={<RouteContainer routes={routes} />}/>
-        <Route exact path="/routes/:id" element={<RouteDetails routes={routes} setRoutes={setRoutes} />}/>
+        <Route exact path="/routes/:id" element={<RouteDetails routes={routes} setRoutes={setRoutes} user={user}/>}/>
         <Route exact path="/routes/new" element={<NewRoute routes={routes} setRoutes={setRoutes}/>}/>
       </Routes>
     </div>
