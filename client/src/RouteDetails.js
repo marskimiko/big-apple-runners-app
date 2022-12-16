@@ -15,7 +15,7 @@ function RouteDetails( {routes, setRoutes} ) {
     if (details) {
       return (
         <div>
-          <div class="container">
+          <div className="container">
           <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" src={details['image_url']} alt="mapPhoto"/>
             <Card.Body>

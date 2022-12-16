@@ -12,11 +12,15 @@ import RouteDetails from './RouteDetails'
 function App() {
   const [user, setUser] = useState(null);
   const [routes, setRoutes] = useState([]);
+  const [errors, setErrors] = useState(false)
+  console.log('errors', errors)
 
   useEffect(() => {
     fetch('/me').then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
+      } else {
+        r.json().then(data => setErrors(data.error))
       }
     });
   }, []);
@@ -27,6 +31,8 @@ function App() {
     .then((r) => r.json())
     .then(setRoutes)
   },[])
+
+  if(errors) return <h1>{errors}</h1>
 
   return (
     <div>

@@ -1,9 +1,5 @@
 import React from 'react';
 import { NavLink } from "react-router-dom"
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function Navigation({ user, setUser}) {
 
@@ -18,11 +14,11 @@ function Navigation({ user, setUser}) {
   }
 
   return (
-      <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
-        <NavLink class="nav-link" to="/">Home</NavLink>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light"> 
+        <NavLink className="nav-link" to="/">Home</NavLink>
   
         <NavLink to="/routes">Routes</NavLink>
-      <a class="nav-link" href="loginoutlink">
+      <li className="nav-link" href="loginoutlink">
         {user ? (
           <button onClick={handleLogoutClick}>Logout</button>
         ) : (
@@ -31,7 +27,7 @@ function Navigation({ user, setUser}) {
             <NavLink to="/login">Login</NavLink>
           </>
         )}
-      </a>
+      </li>
     </nav>
     // <Navbar bg="light" expand="lg">
     //   <Container>

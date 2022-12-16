@@ -19,7 +19,7 @@ function RouteCard({ route }) {
         <Card.Img variant="top" src={image_url} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
-          <Link  to={`/routes/${id}`}><Button variant="primary">more info</Button></Link>
+          <Link  to={`/routes/${id}`}><Button variant="success">more info</Button></Link>
         </Card.Body>
       </Card>
       </div>

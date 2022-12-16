@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form'; 
@@ -9,24 +9,9 @@ function NewReview( { setRoutes, routes }) {
   const [body, setBody] = useState("");
   const [rating, setRating] = useState("");
   const params = useParams();
+  const [errors, setErrors] = useState([]);
   
   
-  const newReview = {
-    title,
-    body,
-    rating
-  };
-
-  const configObj = {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-        "Content-Type": "application/json",
-    },
-    body: JSON.stringify(newReview)
-  
-  };
-
     const addNewReview = (review) => {
   
       const newRoutes = routes.map((route) => {
@@ -41,20 +26,33 @@ function NewReview( { setRoutes, routes }) {
       setRoutes(newRoutes)
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-   
-    fetch(`/routes/${params.id}`, configObj)
-    // fetch(`/reviews`, configObj)
-      .then((r) => r.json())
-      .then((review) => {
-        addNewReview(review);
-        console.log('review',review)
-      });
+
+  function handleSubmit(e){
+    e.preventDefault()
+
+    const review = {
+      title,
+      body,
+      rating
+    };
+
+    fetch(`/routes/${params.id}`, {
+      method:'POST',
+      headers:{'Content-Type': 'application/json'},
+      body:JSON.stringify(review)
+    })
+
+    .then(res => {
+      if(res.ok){
+        res.json().then(review => {
+          addNewReview(review)
+        })
+      } else {
+          res.json().then(json => setErrors(json.errors))
+      }
+    })  
   }
 
-  useEffect(() => {
-  }, [routes])
 
   
   return (
@@ -63,7 +61,7 @@ function NewReview( { setRoutes, routes }) {
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="form.Title">
           <Form.Label>Title</Form.Label>
-          <Form.Control id="title"
+          <Form.Control 
             type="text"
             name="title"
             value={title}
@@ -75,7 +73,6 @@ function NewReview( { setRoutes, routes }) {
           <Form.Control 
             as="textarea" 
             rows={3}             
-            id="body"
             type="text"
             name="body"
             value={body}
@@ -85,12 +82,18 @@ function NewReview( { setRoutes, routes }) {
         <Form.Group controlId="form.Rating">
             <Form.Label>Rating: 1-5</Form.Label>
             <Form.Control 
-            id="body"
             type="text"
             name="body"
             value={rating}
             onChange={(e) => setRating(e.target.value)}/>
         </Form.Group>
+        {errors.length > 0 && (
+          <ul style={{ color: "red" }}>
+            {errors.map((error) => (
+               <li key={error}>{error}</li>
+            ))}
+          </ul>
+        )}
         <Button type="submit">Add Review</Button>
       </Form>
     </Container>

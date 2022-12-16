@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 function Login({ setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([])
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -19,12 +20,15 @@ function Login({ setUser }) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
-        navigate("/routes");
+        navigate("/");
+      } else {
+        r.json().then(json => setErrors(json.errors))
       }
     });
   }
 
   return (
+    <>
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label htmlFor="username">Username</Form.Label>
@@ -53,6 +57,8 @@ function Login({ setUser }) {
         Login
       </Button>
     </Form>
+    {errors? <div>{errors}</div>:null}
+    </>
 
   );
 }
