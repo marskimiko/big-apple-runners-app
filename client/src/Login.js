@@ -9,8 +9,6 @@ function Login({ setUser }) {
   const [errors, setErrors] = useState([])
   const navigate = useNavigate();
 
-  console.log(errors)
-
   function handleSubmit(e){
     e.preventDefault()
 
@@ -32,7 +30,10 @@ function Login({ setUser }) {
           navigate("/");
         })
         } else {
-          res.json().then(json => setErrors(json.errors))
+          res.json().then(json => {
+            // debugger
+            setErrors(json.errors) 
+          })
           // res.json().then(json => setErrors(Object.entries(json.errors)))
         }
       })  
@@ -66,7 +67,7 @@ function Login({ setUser }) {
         Login
       </Button>
     </Form>
-    {errors?errors.map(e => <div>{e[0]+': ' + e[1]}</div>):null}
+    {errors? <div style={{ color: "red" }}>{errors}</div>:null}
     </>
   );
 }

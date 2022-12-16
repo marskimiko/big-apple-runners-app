@@ -6,7 +6,8 @@ import Navigation from './Navigation'
 import Signup from './Signup'
 import Login from './Login'
 import RouteContainer from './RouteContainer'
-import RouteDetails from './RouteDetails'
+import RouteDetails from './RouteDetails' 
+import NewRoute from './NewRoute'
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route exact path="/login" element={<Login setUser={setUser}/>} />
         <Route exact path="/routes" element={<RouteContainer routes={routes} />}/>
         <Route exact path="/routes/:id" element={<RouteDetails routes={routes} setRoutes={setRoutes} />}/>
+        <Route exact path="/routes/new" element={<NewRoute routes={routes} setRoutes={setRoutes}/>}/>
       </Routes>
     </div>
   );

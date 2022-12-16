@@ -10,14 +10,68 @@ function SignUp({ setUser }) {
   const [errors, setErrors] = useState([])
   const navigate = useNavigate();
 
+  // function handleSubmit(e){
+  //   e.preventDefault()
+  //   const user = {
+  //       username,
+  //       password,
+  //       passwordConfirmation: passwordConfirmation
+  //   }
+  //   fetch(`/signup`,{
+  //     method:'POST',
+  //     headers:{'Content-Type': 'application/json'},
+  //     body:JSON.stringify(user)
+  //   })
+  //   .then(res => {
+  //     if(res.ok){
+  //       res.json().then(user => {
+  //         setUser(user)
+  //         navigate("/");
+  //       })
+  //       } else {
+  //         res.json().then(json => setErrors(json.errors))
+  //       }
+  //     })  
+  // }
+
+  // function handleSubmit(e){
+  //   e.preventDefault()
+
+  //   const user = {
+  //       username,
+  //       password,
+  //       passwordConfirmation: passwordConfirmation
+  //   }
+    
+  //   fetch(`/signup`,{
+  //     method:'POST',
+  //     headers:{'Content-Type': 'application/json'},
+  //     body:JSON.stringify(user)
+  //   })
+  //   .then(res => {
+  //     if(res.ok){
+  //       res.json().then(user => {
+  //         setUser(user)
+  //         // navigate("/");
+  //       })
+  //       } else {
+  //         res.json().then(json => {
+  //           setErrors(json.errors)
+  //         })
+  //       }
+  //     })  
+  // }
+
   function handleSubmit(e){
     e.preventDefault()
+
     const user = {
         username,
         password,
         passwordConfirmation: passwordConfirmation
     }
-    fetch(`/signup`,{
+    
+    fetch(`/users`,{
       method:'POST',
       headers:{'Content-Type': 'application/json'},
       body:JSON.stringify(user)
@@ -29,7 +83,9 @@ function SignUp({ setUser }) {
           navigate("/");
         })
         } else {
-          res.json().then(json => setErrors(json.errors))
+          res.json().then(json => {
+            setErrors(json.errors)
+          })
         }
       })  
   }
@@ -41,41 +97,44 @@ function SignUp({ setUser }) {
       <Form.Label>Username</Form.Label>
       <Form.Control            
         type="text"
-        autoComplete="off"
         placeholder="Username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}/>
     </Form.Group>
 
-    <Form.Group className="mb-3" controlId="formBasicPassword">
-      <Form.Label htmlFor="password">Password</Form.Label>
+    <Form.Group className="mb-3" controlId="form.Password">
+      <Form.Label>Password</Form.Label>
       <Form.Control          
         type="password"
-        id="password"
-        autoComplete="current-password"
+        name="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)} 
         />
     </Form.Group>
 
-    <Form.Group className="mb-3" controlId="formBasicPassword">
-      <Form.Label htmlFor="password">Confirm Password</Form.Label>
+    <Form.Group className="mb-3" controlId="form.PasswordConfirmation">
+      <Form.Label>Confirm Password</Form.Label>
       <Form.Control          
         type="password"
-        id="password_confirmation"
-        autoComplete="current-password"
+        name="password"
         placeholder="Password"
         value={passwordConfirmation}
         onChange={(e) => setPasswordConfirmation(e.target.value)} 
         />
     </Form.Group>
-
+    {errors.length > 0 && (
+          <ul style={{ color: "red" }}>
+            {errors.map((error) => (
+               <li key={error}>{error}</li>
+            ))}
+          </ul>
+        )}
     <Button variant="primary" type="submit">
       SignUp
     </Button>
   </Form>
-  {errors?errors.map(e => <div>{e[0]+': ' + e[1]}</div>):null}
+  {/* {errors? <div style={{ color: "red" }}>{errors}</div>:null} */}
   </>
   );
 }

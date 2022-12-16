@@ -18,6 +18,7 @@ function Navigation({ user, setUser}) {
         <NavLink className="nav-link" to="/">Home</NavLink>
   
         <NavLink to="/routes">Routes</NavLink>
+        <NavLink to="/routes/new">New Route</NavLink>
       <li className="nav-link" href="loginoutlink">
         {user ? (
           <button onClick={handleLogoutClick}>Logout</button>
