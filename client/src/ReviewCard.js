@@ -55,7 +55,7 @@ function ReviewCard ({review, onUpdateReview, routes, setRoutes, user }) {
   <Button variant="outline-secondary" onClick={handleDelete}>🗑</Button>
 
   return (
-    <div class="reviewcontainer">
+    <div className="reviewcontainer">
       <div class="reviewitem">
     <Card className="text-center">
       <Card.Header as="h5">{title}</Card.Header>

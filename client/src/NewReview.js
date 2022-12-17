@@ -11,6 +11,16 @@ function NewReview( { setRoutes, routes }) {
   const params = useParams();
   const [errors, setErrors] = useState([]);
 
+  const style = {
+    reviewForm: {
+      border: "2px solid #D3D3D3",
+      borderRadius: '25px',
+      paddingTop: '40px',
+      width: '200px',
+      height: '350px'
+    }
+  }
+
     const addNewReview = (review) => {
   
       const newRoutes = routes.map((route) => {
@@ -53,10 +63,9 @@ function NewReview( { setRoutes, routes }) {
   }
 
 
-  
+  // className="square border rounded border-5"
   return (
-
-    <Container>
+    <Container style={style.reviewForm}>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="form.Title">
           <Form.Label>Title</Form.Label>

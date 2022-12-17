@@ -14,7 +14,6 @@ function App() {
   const [user, setUser] = useState(null);
   const [routes, setRoutes] = useState([]);
   const [errors, setErrors] = useState(false)
-  console.log('errors', errors)
 
   useEffect(() => {
     fetch('/me').then((r) => {
@@ -33,8 +32,11 @@ function App() {
     .then(setRoutes)
   },[])
 
+  const addRoute = (route) => {
+    setRoutes(current => [...current,route])
+  }
+
   
-  if(errors) return <h1>{errors}</h1>
 
   return (
     <div>
@@ -45,7 +47,7 @@ function App() {
         <Route exact path="/login" element={<Login setUser={setUser}/>} />
         <Route exact path="/routes" element={<RouteContainer routes={routes} />}/>
         <Route exact path="/routes/:id" element={<RouteDetails routes={routes} setRoutes={setRoutes} user={user}/>}/>
-        <Route exact path="/routes/new" element={<NewRoute routes={routes} setRoutes={setRoutes}/>}/>
+        <Route exact path="/routes/new" element={<NewRoute routes={routes} setRoutes={setRoutes} addRoute={addRoute}/>}/>
       </Routes>
     </div>
   );
