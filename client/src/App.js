@@ -26,6 +26,12 @@ function App() {
     });
   }, []);
 
+  // useEffect(() => {
+  //   fetch('/users')
+  //   .then((r) =>r.json())
+  //   .then(setUser)
+  // }, [])
+
 
   useEffect(() => {
     fetch('/routes')
@@ -49,7 +55,8 @@ function App() {
         <Route exact path="/routes" element={<RouteContainer routes={routes} />}/>
         <Route exact path="/routes/:id" element={<RouteDetails routes={routes} setRoutes={setRoutes} user={user}/>}/>
         <Route exact path="/routes/new" element={<NewRoute routes={routes} setRoutes={setRoutes} addRoute={addRoute}/>}/>
-        
+        <Route exact path="/me/routes" element={<MyRouteContainer routes={routes} user={user}/>}/>
+
       </Routes>
     </div>
   );

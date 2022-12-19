@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # post '/routes/:route_id/reviews', to: 'reviews#create'
 
   # will have full crud
-  resources :users, only: [:index, :create]
+  resources :users, only: [:index, :create, :show]
   resources :reviews
   resources :routes, only: [:index, :show, :create]
 

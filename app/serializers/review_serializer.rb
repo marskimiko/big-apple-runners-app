@@ -4,4 +4,5 @@ class ReviewSerializer < ActiveModel::Serializer
   has_one :user
 
   belongs_to :route
+  belongs_to :user
 end
