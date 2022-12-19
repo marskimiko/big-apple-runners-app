@@ -23,6 +23,7 @@ function Navigation({ user, setUser}) {
             
             <NavLink to="/routes">Routes</NavLink>
             <NavLink to="/routes/new">New Route</NavLink>
+            <NavLink to="/myroutes">My Routes</NavLink>
             <Link to="/"><Button onClick={handleLogoutClick} variant="light">Logout</Button></Link>
           </>
         ) : (

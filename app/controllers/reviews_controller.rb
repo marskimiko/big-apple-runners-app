@@ -1,6 +1,5 @@
-class ReviewsController < ApplicationController
-  # delete later so only logged in user can have access
-  skip_before_action :authorize, only: :index, :show
+class ReviewsController < ApplicationController  
+  before_action :authorize
 
   def index
     render json: Review.all, status: :ok
@@ -11,19 +10,34 @@ class ReviewsController < ApplicationController
     render json: review
   end
   
+  # def create
+  #   render json: Review.create!(review_params), status: :created 
+  # end
+
   def create
-    render json: Review.create!(review_params), status: :created 
+      review = @current_user.reviews.create!(review_params)
+      render json: review, status: :created
   end
 
   def update
     review = Review.find(params[:id])
-    render json: review.update!(review_params), status: :created
+    if review && review.user_id == @current_user.id
+      review.update!(review_params)
+      render json: review , status: :created
+    else
+      render json: "Invalid Credentials", status: :unauthorized
+    end
   end
 
   def destroy
     review = Review.find(params[:id])
-    review.destroy
-    head :no_content
+    if review && review.user_id == @current_user.id
+      # byebug
+      review.destroy
+      head :no_content
+    else
+      render json: "Invalid Credentials", status: :unauthorized
+    end
   end
 
   # maybe dont use this
@@ -35,7 +49,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.permit(:title, :body, :rating, :user_id, :route_id)
+    params.permit(:title, :body, :rating, :route_id)
   end 
 
 end
