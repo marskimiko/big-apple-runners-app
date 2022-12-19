@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-function Login({ setUser }) {
+function Login({ setUser, updateUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([])
@@ -26,7 +26,7 @@ function Login({ setUser }) {
     .then(res => {
       if(res.ok){
         res.json().then(user => {
-          setUser(user)
+          updateUser(user)
           navigate("/");
         })
         } else {

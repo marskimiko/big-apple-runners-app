@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-function SignUp({ setUser }) {
+function SignUp({ setUser, updateUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -79,7 +79,8 @@ function SignUp({ setUser }) {
     .then(res => {
       if(res.ok){
         res.json().then(user => {
-          setUser(user)
+          // setUser(user)
+          updateUser(user)
           navigate("/");
         })
         } else {

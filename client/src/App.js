@@ -43,6 +43,8 @@ function App() {
     setRoutes(current => [...current,route])
   }
 
+  const updateUser = (currentUser) => setUser(currentUser)
+
   
 
   return (
@@ -50,12 +52,12 @@ function App() {
       <Navigation user={user} setUser={setUser} />
         <Routes>
         <Route exact path="/" element={<Home user={user} />}/>
-        <Route exact path="/signup" element={<Signup setUser={setUser}/>} />
-        <Route exact path="/login" element={<Login setUser={setUser}/>} />
+        <Route exact path="/signup" element={<Signup setUser={setUser} updateUser={updateUser} />} />
+        <Route exact path="/login" element={<Login setUser={setUser} updateUser={updateUser} />} />
         <Route exact path="/routes" element={<RouteContainer routes={routes} />}/>
         <Route exact path="/routes/:id" element={<RouteDetails routes={routes} setRoutes={setRoutes} user={user}/>}/>
         <Route exact path="/routes/new" element={<NewRoute routes={routes} setRoutes={setRoutes} addRoute={addRoute}/>}/>
-        <Route exact path="/me/routes" element={<MyRouteContainer routes={routes} user={user}/>}/>
+        <Route exact path="/users/:id" element={<MyRouteContainer updateUser={updateUser}/>}/>
 
       </Routes>
     </div>
