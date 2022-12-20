@@ -6,69 +6,17 @@ import Form from 'react-bootstrap/Form';
 function SignUp({ setUser, updateUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  // const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([])
   const navigate = useNavigate();
 
-  // function handleSubmit(e){
-  //   e.preventDefault()
-  //   const user = {
-  //       username,
-  //       password,
-  //       passwordConfirmation: passwordConfirmation
-  //   }
-  //   fetch(`/signup`,{
-  //     method:'POST',
-  //     headers:{'Content-Type': 'application/json'},
-  //     body:JSON.stringify(user)
-  //   })
-  //   .then(res => {
-  //     if(res.ok){
-  //       res.json().then(user => {
-  //         setUser(user)
-  //         navigate("/");
-  //       })
-  //       } else {
-  //         res.json().then(json => setErrors(json.errors))
-  //       }
-  //     })  
-  // }
-
-  // function handleSubmit(e){
-  //   e.preventDefault()
-
-  //   const user = {
-  //       username,
-  //       password,
-  //       passwordConfirmation: passwordConfirmation
-  //   }
-    
-  //   fetch(`/signup`,{
-  //     method:'POST',
-  //     headers:{'Content-Type': 'application/json'},
-  //     body:JSON.stringify(user)
-  //   })
-  //   .then(res => {
-  //     if(res.ok){
-  //       res.json().then(user => {
-  //         setUser(user)
-  //         // navigate("/");
-  //       })
-  //       } else {
-  //         res.json().then(json => {
-  //           setErrors(json.errors)
-  //         })
-  //       }
-  //     })  
-  // }
-
+ 
   function handleSubmit(e){
     e.preventDefault()
 
     const user = {
         username,
-        password,
-        passwordConfirmation: passwordConfirmation
+        password
     }
     
     fetch(`/users`,{
@@ -90,6 +38,7 @@ function SignUp({ setUser, updateUser }) {
         }
       })  
   }
+  
 
   return (
     <>
@@ -114,7 +63,7 @@ function SignUp({ setUser, updateUser }) {
         />
     </Form.Group>
 
-    <Form.Group className="mb-3" controlId="form.PasswordConfirmation">
+    {/* <Form.Group className="mb-3" controlId="form.PasswordConfirmation">
       <Form.Label>Confirm Password</Form.Label>
       <Form.Control          
         type="password"
@@ -123,7 +72,7 @@ function SignUp({ setUser, updateUser }) {
         value={passwordConfirmation}
         onChange={(e) => setPasswordConfirmation(e.target.value)} 
         />
-    </Form.Group>
+    </Form.Group> */}
     {errors.length > 0 && (
           <ul style={{ color: "red" }}>
             {errors.map((error) => (
@@ -141,23 +90,3 @@ function SignUp({ setUser, updateUser }) {
 }
 
 export default SignUp;
-
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   fetch("/signup", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       username,
-  //       password,
-  //       password_confirmation: passwordConfirmation,
-  //     }),
-  //   }).then((r) => {
-  //     if (r.ok) {
-  //       r.json().then((user) => setUser(user));
-  //       navigate("/routes");
-  //     }
-  //   });
-  // }

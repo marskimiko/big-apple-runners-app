@@ -10,6 +10,7 @@ function NewRoute({ routes, setRoutes, addRoute }) {
   const [location, setLocation] = useState("");
   const [time, setTime] = useState("");
   const [distance, setDistance] = useState("");
+  const [errors, setErrors] = useState([]);
 
   const navigate = useNavigate();
 
@@ -23,9 +24,34 @@ function NewRoute({ routes, setRoutes, addRoute }) {
     }
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('event', e)
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log('event', e)
+
+  //   const newRoute = {
+  //     name,
+  //     image_url,
+  //     location,
+  //     time,
+  //     distance
+  //   }
+
+  //   fetch('/routes', {
+  //     method: "POST",
+  //     headers:{'Content-Type': 'application/json'},
+  //     body:JSON.stringify(newRoute)
+  //   })
+
+
+  //   .then((r) => r.json())
+  //   .then((route) => {
+  //     addRoute(route)
+  //     navigate('/routes');
+  //   })
+  // }
+
+  function handleSubmit(e){
+    e.preventDefault()
 
     const newRoute = {
       name,
@@ -33,7 +59,7 @@ function NewRoute({ routes, setRoutes, addRoute }) {
       location,
       time,
       distance
-    }
+    };
 
     fetch('/routes', {
       method: "POST",
@@ -41,12 +67,16 @@ function NewRoute({ routes, setRoutes, addRoute }) {
       body:JSON.stringify(newRoute)
     })
 
-
-    .then((r) => r.json())
-    .then((route) => {
-      addRoute(route)
-      navigate('/routes');
-    })
+    .then(res => {
+      if(res.ok){
+        res.json().then(route => {
+          addRoute(route)
+          navigate('/routes');
+        })
+      } else {
+          res.json().then(json => setErrors(json.errors))
+      }
+    })  
   }
 
 
@@ -105,6 +135,13 @@ function NewRoute({ routes, setRoutes, addRoute }) {
             onChange={(e) => setDistance(e.target.value)}
           />
         </Form.Group>
+        {errors.length > 0 && (
+          <ul style={{ color: "red" }}>
+            {errors.map((error) => (
+               <li key={error}>{error}</li>
+            ))}
+          </ul>
+        )}
         <Button type="submit">Create Listing</Button>
       </Form>
     </Container>

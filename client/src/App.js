@@ -12,7 +12,7 @@ import MyRouteContainer from './MyRouteContainer';
 
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState({routes: []});
   const [routes, setRoutes] = useState([]);
   const [errors, setErrors] = useState(false)
 
@@ -26,12 +26,6 @@ function App() {
     });
   }, []);
 
-  // useEffect(() => {
-  //   fetch('/users')
-  //   .then((r) =>r.json())
-  //   .then(setUser)
-  // }, [])
-console.log(currentUser)
 
   useEffect(() => {
     fetch('/routes')
@@ -49,9 +43,9 @@ console.log(currentUser)
 
   return (
     <div>
-      <Navigation user={currentUser} setUser={setCurrentUser} />
+      <Navigation currentUser={currentUser} setUser={setCurrentUser} updateUser={updateUser} />
         <Routes>
-        <Route exact path="/" element={<Home user={currentUser} />}/>
+        <Route exact path="/" element={<Home currentUser={currentUser} />}/>
         <Route exact path="/signup" element={<Signup setUser={setCurrentUser} updateUser={updateUser} />} />
         <Route exact path="/login" element={<Login setUser={setCurrentUser} updateUser={updateUser} />} />
         <Route exact path="/routes" element={<RouteContainer routes={routes} />}/>
