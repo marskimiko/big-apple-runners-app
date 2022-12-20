@@ -5,6 +5,9 @@ import Button from 'react-bootstrap/Button';
 
 function Navigation({ user, setUser}) {
 
+
+  // const {id} = user;
+
   function handleLogoutClick() {
     fetch("/logout", { 
       method: "DELETE"})
@@ -23,7 +26,7 @@ function Navigation({ user, setUser}) {
             
             <NavLink to="/routes">Routes</NavLink>
             <NavLink to="/routes/new">New Route</NavLink>
-            <NavLink to="/me/routes">My Routes</NavLink>
+            <NavLink to={`/users/${user.id}`}>My Routes</NavLink>
             <Link to="/"><Button onClick={handleLogoutClick} variant="light">Logout</Button></Link>
           </>
         ) : (

@@ -12,14 +12,14 @@ import MyRouteContainer from './MyRouteContainer';
 
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
   const [routes, setRoutes] = useState([]);
   const [errors, setErrors] = useState(false)
 
   useEffect(() => {
     fetch('/me').then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user));
+        r.json().then((user) => setCurrentUser(user));
       } else {
         r.json().then(data => setErrors(data.error))
       }
@@ -31,7 +31,7 @@ function App() {
   //   .then((r) =>r.json())
   //   .then(setUser)
   // }, [])
-
+console.log(currentUser)
 
   useEffect(() => {
     fetch('/routes')
@@ -43,21 +43,21 @@ function App() {
     setRoutes(current => [...current,route])
   }
 
-  const updateUser = (currentUser) => setUser(currentUser)
+  const updateUser = (user) => setCurrentUser(user)
 
   
 
   return (
     <div>
-      <Navigation user={user} setUser={setUser} />
+      <Navigation user={currentUser} setUser={setCurrentUser} />
         <Routes>
-        <Route exact path="/" element={<Home user={user} />}/>
-        <Route exact path="/signup" element={<Signup setUser={setUser} updateUser={updateUser} />} />
-        <Route exact path="/login" element={<Login setUser={setUser} updateUser={updateUser} />} />
+        <Route exact path="/" element={<Home user={currentUser} />}/>
+        <Route exact path="/signup" element={<Signup setUser={setCurrentUser} updateUser={updateUser} />} />
+        <Route exact path="/login" element={<Login setUser={setCurrentUser} updateUser={updateUser} />} />
         <Route exact path="/routes" element={<RouteContainer routes={routes} />}/>
-        <Route exact path="/routes/:id" element={<RouteDetails routes={routes} setRoutes={setRoutes} user={user}/>}/>
+        <Route exact path="/routes/:id" element={<RouteDetails routes={routes} setRoutes={setRoutes} user={currentUser}/>}/>
         <Route exact path="/routes/new" element={<NewRoute routes={routes} setRoutes={setRoutes} addRoute={addRoute}/>}/>
-        <Route exact path="/users/:id" element={<MyRouteContainer updateUser={updateUser}/>}/>
+        <Route exact path="/users/:id" element={<MyRouteContainer updateUser={updateUser} currentUser={currentUser}/>}/>
 
       </Routes>
     </div>
