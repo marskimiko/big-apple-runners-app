@@ -21,7 +21,7 @@ function NewReview( { setRoutes, routes }) {
     }
   }
 
-    const addNewReview = (review) => {
+   const addNewReview = (review) => {
   
       const newRoutes = routes.map((route) => {
         if (parseInt(params.id) === route.id) {

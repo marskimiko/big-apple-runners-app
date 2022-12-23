@@ -4,6 +4,7 @@
 - https://github.com/marskimiko/big-apple-runners-app
 
 # Video Walkthrough:
+https://youtu.be/gFKonH34Jy0
 
 # Blogpost inspired by building Big Apple Runners
 
@@ -54,40 +55,6 @@ Styling was done using CSS and Bootstrap
   - cd into the client folder
   - run 'npm install'
   - run 'npm start' and the application will open into browser
-
-## How to Use:
-
-**•** Click "Listings in the navigation to see all of the listings" 
-
-![Alt Text](phase-3-project-gifs/quicky-1.gif)
-
-**•** Use the dropdown menu to filter the listings by category
-
-![Alt Text](phase-3-project-gifs/quicky-2.gif)
-
-**•** Fill out the form and click "add" to create a new category
-
-![Alt Text](phase-3-project-gifs/quicky-3.gif)
-
-**•** Click the "edit" button to edit a listing
-
-![Alt Text](phase-3-project-gifs/quicky-4.gif)
-
-**•** Click the "save" button to save you edit
-
-![Alt Text](phase-3-project-gifs/quicky-5.gif)
-
-**•** If you want to delete a listing from the browser click the 🗑 button
-
-![Alt Text](phase-3-project-gifs/quicky-6.gif)
-
-**•** Click "New Listing" in the navigation to create a new listing
-
-![Alt Text](phase-3-project-gifs/quicky-7.gif)
-
-**•** Once you fill out the form click the "create listing" button which will take you back to the "Listings" page where you can see your new listing
-
-![Alt Text](phase-3-project-gifs/quicky-8.gif)
 
 
 ## Contributing

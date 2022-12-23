@@ -28,6 +28,8 @@ function ReviewCard ({review, onUpdateReview, routes, setRoutes, user }) {
     setRoutes(updatedRoutes)
   }
 
+  
+
 
   const handleDelete = () => {
     fetch(`/reviews/${id}`, {
