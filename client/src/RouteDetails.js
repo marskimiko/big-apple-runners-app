@@ -33,6 +33,7 @@ function RouteDetails( {routes, setRoutes, user, setUser} ) {
             setRoutes={setRoutes} 
             routes={routes}
             user={user}
+            setUser={setUser}
           />
 
           <NewReview 

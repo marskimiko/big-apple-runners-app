@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import EditReview from './EditReview'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useParams } from 'react-router-dom'
 
-function ReviewCard ({review, onUpdateReview, routes, setRoutes, user }) {
+function ReviewCard ({review, onUpdateReview, routes, setRoutes, user, setUser }) {
   const {title, body, rating, id} = review;
   const [isEdit, setIsEdit] = useState(false);
   const params = useParams();
@@ -13,6 +13,9 @@ function ReviewCard ({review, onUpdateReview, routes, setRoutes, user }) {
   const handleUpdateReview = (updatedReview) => {
     onUpdateReview(updatedReview);
   }
+
+  useEffect(() => {
+  }, [setUser])
 
   function deleteReview(deletedReview) {
     const updatedRoutes = routes.map((route) => {
@@ -28,14 +31,26 @@ function ReviewCard ({review, onUpdateReview, routes, setRoutes, user }) {
     setRoutes(updatedRoutes)
   }
 
-  
+  // const updateUser = (user) => {
+  //   console.log(user)
+  // }
 
+  // const updateUser = (review) => {
+  //   // console.log('review', review)
+  //   const userRoute = user.routes
+  //   console.log(user.reviews)
+  //   const updateRoutes = [...userRoute]
+  //   // console.log("From Review Card->"+JSON.stringify(updateRoutes))
+  //   user.routes = updateRoutes
+  //   setUser(user)
+  // }
 
   const handleDelete = () => {
     fetch(`/reviews/${id}`, {
       method: 'DELETE',
     });
     deleteReview(id)
+    // updateUser(id)
   };
 
   function checkUserEditButton() {

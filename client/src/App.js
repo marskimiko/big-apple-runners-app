@@ -12,9 +12,27 @@ import MyRouteContainer from './MyRouteContainer';
 
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({routes: []});
+  // const [currentUser, setCurrentUser] = useState({routes: []});
+  const [currentUser, setCurrentUser] = useState({
+    id: null,
+    reviews: [],
+    routes: [],
+    username: ""
+  });
   const [routes, setRoutes] = useState([]);
   const [errors, setErrors] = useState(false)
+
+  console.log('currentUser', currentUser)
+  
+  // useEffect(() => {
+  //   fetch('/me').then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((user) => setCurrentUser(user));
+  //     } else {
+  //       r.json().then(data => setErrors(data.error))
+  //     }
+  //   });
+  // }, []);
 
   useEffect(() => {
     fetch('/me').then((r) => {
@@ -24,7 +42,7 @@ function App() {
         r.json().then(data => setErrors(data.error))
       }
     });
-  }, []);
+  }, [routes, setRoutes]);
 
 
   useEffect(() => {
