@@ -24,31 +24,6 @@ function NewRoute({ routes, setRoutes, addRoute }) {
     }
   }
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log('event', e)
-
-  //   const newRoute = {
-  //     name,
-  //     image_url,
-  //     location,
-  //     time,
-  //     distance
-  //   }
-
-  //   fetch('/routes', {
-  //     method: "POST",
-  //     headers:{'Content-Type': 'application/json'},
-  //     body:JSON.stringify(newRoute)
-  //   })
-
-
-  //   .then((r) => r.json())
-  //   .then((route) => {
-  //     addRoute(route)
-  //     navigate('/routes');
-  //   })
-  // }
 
   function handleSubmit(e){
     e.preventDefault()

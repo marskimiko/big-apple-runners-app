@@ -4,7 +4,7 @@ import NewReview from './NewReview';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 
-function RouteDetails( {routes, setRoutes, user} ) {
+function RouteDetails( {routes, setRoutes, user, setUser} ) {
   const params = useParams()
 
 
@@ -38,6 +38,8 @@ function RouteDetails( {routes, setRoutes, user} ) {
           <NewReview 
             setRoutes={setRoutes} 
             routes={routes}
+            user={user}
+            setUser={setUser}
           />
       </div>
       )

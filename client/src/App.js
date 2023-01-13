@@ -49,7 +49,7 @@ function App() {
         <Route exact path="/signup" element={<Signup setUser={setCurrentUser} updateUser={updateUser} />} />
         <Route exact path="/login" element={<Login setUser={setCurrentUser} updateUser={updateUser} />} />
         <Route exact path="/routes" element={<RouteContainer routes={routes} />}/>
-        <Route exact path="/routes/:id" element={<RouteDetails routes={routes} setRoutes={setRoutes} user={currentUser}/>}/>
+        <Route exact path="/routes/:id" element={<RouteDetails routes={routes} setRoutes={setRoutes} user={currentUser} setUser={setCurrentUser}/>}/>
         <Route exact path="/routes/new" element={<NewRoute routes={routes} setRoutes={setRoutes} addRoute={addRoute}/>}/>
         <Route exact path="/users/:id" element={<MyRouteContainer updateUser={updateUser} currentUser={currentUser}/>}/>
 

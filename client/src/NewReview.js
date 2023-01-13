@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form'; 
 import Button from 'react-bootstrap/Button';
 
-function NewReview( { setRoutes, routes }) {
+function NewReview( { setRoutes, routes, user, setUser }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [rating, setRating] = useState("");
@@ -20,6 +20,43 @@ function NewReview( { setRoutes, routes }) {
       height: '350px'
     }
   }
+
+
+  const updateUser = (review) => {
+    // get the user.routes 
+    // add review.route to the user route
+    // update the user with setUser
+    
+    const userRoute = user.routes
+    const reviewRoute = review.route
+    
+    const updateRoutes = [...userRoute, reviewRoute]
+
+    user.routes = updateRoutes
+    setUser(user)
+    // setUser([...user.routes, review.route])
+    // setUser([])
+    // setUser()
+    console.log(userRoute)
+    console.log(user)
+    // console.log('new user', updatedRoutes)
+    // update the routes 
+    // add route to user.routes 
+    // user 
+    // review
+  }
+
+  // function updateUser() {
+  //   // setCurrentUser(current => [...current,])
+  //   // user.route.id 
+  //   // user.reviews.route_id
+  //   // update userState with setCurrentUser
+
+  //   // if the review.route_id is equal to the review id update the state of the current user??
+  //   // [...currentUser.routes]
+  //   console.log(user)
+  //   console.log(user.reviews)
+  // }
 
    const addNewReview = (review) => {
   
@@ -55,6 +92,8 @@ function NewReview( { setRoutes, routes }) {
       if(res.ok){
         res.json().then(review => {
           addNewReview(review)
+          updateUser(review)
+          
         })
       } else {
           res.json().then(json => setErrors(json.errors))

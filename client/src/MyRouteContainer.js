@@ -1,6 +1,12 @@
+import React, { useEffect } from 'react';
 import MyRouteCard from "./MyRouteCard";
-import {useParams} from 'react-router-dom'
+import {useParams } from 'react-router-dom'
 function MyRouteContainer({currentUser}){
+  
+  console.log('my route container', currentUser.routes)
+  
+  useEffect(() => {
+  }, [currentUser.routes])
   
   
     return (

@@ -10,7 +10,7 @@ https://youtu.be/gFKonH34Jy0
 
 # Project Philosophy: 
 
-Big Apple Runngers is an application built for runners to find routes in NYC and write reviews on them to share with eachother. As a runner in NYC finding it hard to find good places to run in such an urban environment I was inspired to create a space for runners to share the findings and experiences with eahother.
+Big Apple Runngers is an application built for runners to find routes in NYC and write reviews on them to share with eachother. As a runner in NYC finding it hard to find good places to run in such an urban environment I was inspired to create a space for runners to share the findings and experiences with each other.
 
 # Features:
 
@@ -24,7 +24,7 @@ Big Apple Runngers is an application built for runners to find routes in NYC and
 
 ## Description of app: 
 
-This is a single page full-stack CRUD application that has a back-end that was creating using Ruby and Runy on Rails and a front-end that was created using React and Javascript
+This is a single page full-stack CRUD application that has a back-end that was creating using Ruby and Ruby on Rails and a front-end that was created using React and Javascript
 
 On the front end the application uses a total of 15 components: App.js, Home.js, Navigation.js, Login.js, Signup.js, RouteContainer.js, RouteCard.js, RouteDetails.js, NewRoute.js, ReviewContainer.js, ReviewCard.js, NewReview.js, EditReview.js, MyRouteContainer.js, MyRouteCard.js
 
